@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <script src="roller.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+    <link rel="stylesheet" type="text/css" href="roller.css">
+    <link rel="shortcut icon" href="blaklowtuz.ico" type="image/x-icon" />
+    <title>Dice Roller App</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Matt Cardinal">
+    <meta name="description" content="A dice roller for Descension.">
+    <meta name=viewport content ="width=600">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="roller">
+        <div id="form">
+          <b>Tier:</b>
+          <select id="tier">
+            <option id="tier1" selected>1</option>
+            <option id="tier2">2</option>
+            <option id="tier3">3</option>
+            <option id="tier4">4</option>
+            <option id="tier5">5</option>
+            <option id="tier6">6</option>
+            <option id="tier7">7</option>
+            <option id="tier8">8</option>
+            <option id="tier9">9</option>
+
+          </select>
+          <b>Class:</b>
+          <select id="class">
+            <option name="delver" id="delver" selected>Delver</option>
+            <option name="duelist" id="duelist">Duelist</option>
+            <option name="godsend" id="godsend">Godsend</option>
+            <option name="loreMaster" id="loremaster">Lore Master</option>
+            <option name="marksman" id="marksman">Marksman</option>
+            <option name="martyr" id="martyr">Martyr</option>
+            <option name="warrior" id="warrior">Warrior</option>
+          </select>
+          <button type="button" id="rollButton" onclick="firstRoll();" class>Roll</button>
+        </div>
+        <div id="result">
+        </div>
+        <div id="controls">
+        </div>
+        <div id ="stat"></div>
+    </div>
+    <div id="log">
+      <div id="logHeader" class="bold">
+        Past Results
+      </div>
+      <div id="logContent"></div>
+      <div id="logButtons">
+        <button id="logClearLast" type="button" onclick="clearLogLast()">Clear Last</button>
+        <button id="logClearAll" type="button" onclick="clearLogAll()">Clear All</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

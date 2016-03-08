@@ -1,0 +1,385 @@
+{
+"types":
+	[
+	[2, "offhand"],
+	[5, "armor"],
+	[9, "weapon"],
+	[14, "accessory"],
+	[15, ["offhand", "armor"]],
+	[16,["armor", "weapon"]],
+	[17, ["weapon", "accessory"]],
+	[20, ["weapon", "offhand", "armor", "accessory"]]
+	],
+"store":
+	{
+	"weapon":
+		[
+		["Longspear","Ignition Staff", "Shortbow"],
+		["Shortbow", "Mace", "Conduit Staff"],
+		["Dagger", "Arcanic Staff", "Crossbow"],
+		["Crossbow", "Greatflail", "Caustic Staff"],
+		["Axe","Frigid Staff", "Longbow"],
+		["Longbow", "Greatsword", "Longsword", "Thinblade"]
+		],
+	"armor":
+		[
+		["Brigandine", "Leather Jerkin"],
+		["Leather Jerkin", "Half Plate"],
+		["Half Plate", "Padded Jack"],
+		["Padded Jack", "Mail"],
+		["Mail", "Full Plate"],
+		["Full Plate", "Brigandine"]
+		],
+	"offhand":
+		[
+		["Tower Shield", "Crystal Barrier (Blue)"],
+		["Crystal Barrier (Blue)", "Buckler"],
+		["Buckler", "Crystal Barrier (Red)"],
+		["Crystal Barrier (Red)", "Round Shield"],
+		["Kite Shield", "Round Shield"],
+		["Crystal Barrier (Green)", "Kite Shield"]
+		],
+	"accessory":
+		[
+		"Amulet",
+		"Bracers",
+		"Ring",
+		"Necklace",
+		"Headband",
+		"Cape",
+		"Gloves",
+		"Cloak"
+		]
+	},
+"enhancements":
+	{
+	"accessory":
+		{
+		"tier1":
+			{
+			"primary": ["1d3", 1],
+			"secondary": ["", 0]
+			},
+		"tier2":
+			{
+			"primary": ["1d4", 1],
+			"secondary": ["", 0]
+			},
+		"tier3":
+			{
+			"primary": ["1d6", 1],
+			"secondary": ["1d2", 0]
+			},
+		"tier4":
+			{
+			"primary": ["2d4", 0],
+			"secondary": ["1d2", 0]
+			},
+		"tier5":
+			{
+			"primary": ["2d4", 1],
+			"secondary": ["1d2", 1]
+			},
+		"tier6":
+			{
+			"primary": ["3d3", 1],
+			"secondary": ["1d2", 1]
+			},
+		"tier7":
+			{
+			"primary": ["3d4", 1],
+			"secondary": ["1d4", 1]
+			},
+		"tier8":
+			{
+			"primary": ["2d6", 2],
+			"secondary": ["1d4", 1]
+			},
+		"tier9":
+			{
+			"primary": ["2d6", 4],
+			"secondary": ["1d6", 1]
+			}
+		},
+	"weapon":
+		{
+		"tier1":
+			[0, 0, 0],
+		"tier2":
+			[90, 100, 0],
+		"tier3":
+			[90, 100, 0],
+		"tier4":
+			[90, 100, 0],
+		"tier5":
+			[90, 100, 0],
+		"tier6":
+			[90, 100, 0],
+		"tier7":
+			[90, 96, 100],
+		"tier8":
+			[80, 100, 0],
+		"tier9":
+			[90, 100, 0]
+		}
+	},
+"magic":
+	{
+	"accessory":
+		{
+		"delver":
+			[
+			[1, "of Charm"],
+			[3, "of Stamina"],
+			[6, "of Power"],
+			[10, "of Attunement"],
+			[15, "of Finesse"],
+			[16, ["of Charm", "of Stamina"]],
+			[17, ["of Stamina", "of Power"]],
+			[18, ["of Power", "of Attunement"]],
+			[19, ["of Attunement", "of Finesse"]],
+			[20, ["of Charm", "of Stamina", "of Finesse", "of Power", "of Attunement"]]
+			],
+		"duelist":
+			[
+			[1, "of Attunement"],
+			[3, "of Charm"],
+			[6, "of Stamina"],
+			[10, "of Power"],
+			[15, "of Finesse"],
+			[16, ["of Attunement", "of Charm"]],
+			[17, ["of Charm", "of Stamina"]],
+			[18, ["of Stamina", "of Power"]],
+			[19, ["of Power", "of Finesse"]],
+			[20, ["of Charm", "of Stamina", "of Finesse", "of Power", "of Attunement"]]
+			],
+		"godsend":
+			[
+			[1, "of Charm"],
+			[3, "of Finesse"],
+			[6, "of Power"],
+			[10, "of Stamina"],
+			[15, "of Attunement"],
+			[16, ["of Charm", "of Finesse"]],
+			[17, ["of Finesse", "of Power"]],
+			[18, ["of Power", "of Stamina"]],
+			[19, ["of Attunement", "of Stamina"]],
+			[20, ["of Charm", "of Stamina", "of Finesse", "of Power", "of Attunement"]]
+			],
+		"loremaster":
+			[
+			[1, "of Charm"],
+			[3, "of Finesse"],
+			[6, "of Power"],
+			[10, "of Stamina"],
+			[15, "of Attunement"],
+			[16, ["of Charm", "of Finesse"]],
+			[17, ["of Finesse", "of Power"]],
+			[18, ["of Power", "of Stamina"]],
+			[19, ["of Attunement", "of Stamina"]],
+			[20, ["of Charm", "of Stamina", "of Finesse", "of Power", "of Attunement"]]
+			],
+		"marksman":
+			[
+			[1, "of Charm"],
+			[3, "of Stamina"],
+			[6, "of Attunement"],
+			[10, "of Power"],
+			[15, "of Finesse"],
+			[16, ["of Charm", "of of Stamina"]],
+			[17, ["of Stamina", "of Attunement"]],
+			[18, ["of Power", "of Attunement"]],
+			[19, ["of Power", "of Finesse"]],
+			[20, ["of Charm", "of Stamina", "of Finesse", "of Power", "of Attunement"]]
+			],
+		"martyr":
+				[
+				[1, "of Charm"],
+				[3, "of Finesse"],
+				[6, "of Attunement"],
+				[10, "of Power"],
+				[15, "of Stamina"],
+				[16, ["of Charm", "of Finesse"]],
+				[17, ["of Finesse", "of Attunement"]],
+				[18, ["of Power", "of Attunement"]],
+				[19, ["of Power", "of Stamina"]],
+				[20, ["of Charm", "of Stamina", "of Finesse", "of Power", "of Attunement"]]
+				],
+			"warrior":
+				[
+				[1, "of Charm"],
+				[3, "of Attunement"],
+				[6, "of Finesse"],
+				[10, "of Stamina"],
+				[15, "of Power"],
+				[16, ["of Charm", "of Attunement"]],
+				[17, ["of Attunement", "of Finesse"]],
+				[18, ["of Finesse", "of Stamina"]],
+				[19, ["of Stamina", "of Power"]],
+				[20, ["of Charm", "of Stamina", "of Finesse", "of Power", "of Attunement"]]
+				]
+		},
+	"armor":
+	[
+	[4, "Retardant"],
+	[8, "Negating"],
+	[12, "Neutralizing"],
+	[16,"Tepid"],
+	[20,"Grounded"],
+	[30,"Fortified"],
+	[40,"Reinforced"],
+	[50,"Mobile"],
+	[60,"Resistant"],
+	[70,"Intense"],
+	[80,"Quenched"],
+	[90,"Homebound"],
+	[100,"of Ease"]
+	],
+	"offhand":
+		[
+		["Energized"],
+		["Hardy"],
+		["Vampiric"],
+		["Evasive"],
+		["Holy"],
+		["Thorned"],
+		["Harrying"],
+		["Acute"]
+		],
+	"weapon":
+		{
+		"B":
+			[
+			[1,"Sharp"],
+			[2,"Lethal"],
+			[3,"Erratic"],
+			[4,"Flaming"],
+			[5,"Electric"],
+			[6,"Frost"],
+			[7,"Corrosive"],
+			[8,"Arcane"],
+			[9,"Bloody"],
+			[10,"Piercing"]
+			],
+		"C":
+			[
+			[1,"Opportunistic"],
+			[2,"Agile"],
+			[3,"Extending"],
+			[4,"Powerful"],
+			[5,"Spry"]
+			],
+		"S":
+			[
+			[100, "S-Class"]
+			]
+		}
+	},
+	"stats":
+		{
+		"base":
+			{
+			"Tower Shield": [["DR", "2/Shock"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 5], ["Special Stats", "Can provide cover"], ["Value", "Unknown"]],
+			"Crystal Barrier (Blue)": [["DR", "5/Acid"], ["AC", 0], ["Barrier", 15], ["ACrit", 2], ["Attunement Requirement", 4],["Special Stats", "None"], ["Value", "Unknown"]],
+			"Buckler": [["DR", "0/Acid"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 1], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Crystal Barrier (Red)": [["DR", "2/Frost"], ["AC", 0], ["Barrier", 30], ["ACrit", 2], ["Attunement Requirement", 2],["Special Stats", "None"], ["Value", "Unknown"]],
+			"Round Shield": [["DR", "0/Fire"], ["AC", 3], ["ACrit", 5], ["Power Requirement", 2], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Kite Shield": [["DR", "1/Shock"], ["AC", 1], ["ACrit", 3], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Crystal Barrier (Green)": [["DR", "3/Fire"], ["AC", 0], ["Barrier", 25], ["ACrit", 2], ["Attunement Requirement", 3],["Special Stats", "None"], ["Value", "Unknown"]],
+			"Longspear": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "3d8+0"], ["Range", 2], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Ignition Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Fire Damage", "1d6+0"], ["Fire Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Shortbow": [["Piercing Damage", "1d6+0"], ["Piercing Critical Damage", "2d10+0"], ["Range", "1-10"], ["Hands", 2], ["Hit", 0], ["Power Requirement", 2], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Mace": [["Bashing Damage", "2d4+0"], ["Bashing Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 2], ["Power Requirement", 4], ["Special Stats", "Force"], ["Value", "Unknown"]],
+			"Conduit Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Shock Damage", "1d6+0"], ["Shock Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Dagger": [["Piercing Damage", "1d4+0"], ["Piercing Critical Damage", "2d12+4"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 1], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Arcanic Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Arcane Damage", "1d6+0"], ["Arcane Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Frigid Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Frost Damage", "1d6+0"], ["Frost Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Caustic Staff": [["Bashing Damage", "1d6+0"],["Bashing Critical Damage", "2d6+0"], ["Acid Damage", "1d6+0"], ["Acid Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Crossbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", 8], ["Hands", 2], ["Hit", 2], ["Power Requirement", 2], ["Special Stats", "Move action to load"], ["Value", "Unknown"]],
+			"Greatflail": [["Bashing Damage", "1d8+0"], ["Bashing Critical Damage", "1d12+0"], ["Range", 2], ["Hands", 2], ["Hit", 2], ["Power Requirement", 4], ["Special Stats", "Force"], ["Value", "Unknown"]],
+			"Axe": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "Force"], ["Value", "Unknown"]],
+			"Longbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "2-12"], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Greatsword": [["Slashing Damage", "2d6+0"],["Slashing Critical Damage", "3d6+0"], ["Range", "1-2"], ["Hands", 2], ["Hit", 0], ["Power Requirement", 4], ["Special Stats", "Force"], ["Value", "Unknown"]],
+			"Longsword": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Thinblade": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+2"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "None"], ["Value", "Unknown"]],
+			"Brigandine": [["DR", "2/Acid"], ["Max Finesse", 5], ["AC", 4], ["ACrit", 9], ["Power Requirement", 3],["Value", "Unknown"]],
+			"Leather Jerkin": [["Max Finesse", 12], ["AC", 1], ["ACrit", 4], ["Power Requirement", 1],["Value", "Unknown"]],
+			"Half Plate": [["DR", "3/Shock"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 10], ["Power Requirement", 3],["Value", "Unknown"]],
+			"Padded Jack": [["DR", "1/Fire"], ["Max Finesse", 9], ["AC", 2], ["ACrit", 6], ["Power Requirement", 1],["Value", "Unknown"]],
+			"Mail": [["DR", "2/Frost"], ["Max Finesse", 7], ["AC", 3], ["ACrit", 7], ["Power Requirement", 2],["Value", "Unknown"]],
+			"Full Plate": [["DR", "3/Shock"], ["Max Finesse", 3], ["AC", 5], ["ACrit", 12], ["Power Requirement", 4],["Value", "Unknown"]]
+			},
+			"progression":
+			{
+			"Max Finesse3": [3, 4, 5, 6, 7, 8, 9, 10, 11],
+			"Max Finesse4": [4, 5, 6, 7, 9, 10, 11, 12, 14],
+			"Max Finesse5": [5, 7, 8, 10, 11, 13, 14, 16, 17],
+			"Max Finesse6": [6, 8, 10, 11, 13, 15, 17, 18, 20],
+			"Max Finesse7": [7, 9, 11, 12, 14, 16, 18, 20, 22],
+			"Max Finesse8": [8, 10, 12, 14, 16, 28, 20, 22, 25],
+			"Max Finesse9": [9, 11, 13, 16, 18, 20, 23, 25, 28],
+			"Max Finesse10": [10, 12, 15, 17, 20, 22, 25, 27, 30],
+			"Max Finesse11": [11, 14, 17, 20, 23, 26, 29, 32, 35],
+			"Max Finesse12": [12, 15, 19, 21, 25, 28, 32, 36, 40],
+			"AC0": [0, 0, 1, 1, 1, 2, 2, 2, 3],
+			"AC1": [1, 1, 2, 2, 3, 3, 4, 4, 5],
+			"AC2": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+			"AC3": [3, 4, 6, 7, 9, 10, 12, 13, 15],
+			"AC4": [4, 5, 7, 9, 10, 12, 14, 15, 17],
+			"AC5": [5, 7, 9, 11, 13, 15, 17, 19, 21],
+			"AC6": [6, 8, 10, 13, 15, 17, 20, 22, 24],
+			"AC7": [7, 9, 12, 14, 17, 19, 22, 24, 27],
+			"AC8": [8, 11, 13, 16, 19, 21, 24, 27, 30],
+			"AC9": [9, 12, 15, 18, 22, 25, 28, 31, 35],
+			"AC10": [10, 14, 18, 22, 26, 30, 34, 38, 42],
+			"AC11": [11, 15, 20, 24, 29, 33, 38, 42, 47],
+			"AC12": [12, 17, 22, 27, 32, 37, 42, 47, 52],
+			"DR0": [0, 0, 1, 1, 1, 2, 2, 2, 3],
+			"DR1": [1, 1, 2, 2, 3, 3, 4, 4, 5],
+			"DR2": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+			"DR3": [3, 4, 6, 7, 9, 10, 12, 13, 15],
+			"DR4": [4, 5, 7, 9, 10, 12, 14, 15, 17],
+			"DR5": [5, 7, 9, 11, 13, 15, 17, 19, 21],
+			"DR6": [6, 8, 10, 13, 15, 17, 20, 22, 24],
+			"ACrit2": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+			"ACrit3": [3, 4, 5, 6, 7, 9, 10, 12, 13, 15],
+			"ACrit4": [4, 5, 7, 9, 10, 12, 14, 15, 17],
+			"ACrit5": [5, 7, 9, 11, 13, 15, 17, 19, 21],
+			"ACrit6": [6, 8, 10, 13, 15, 17, 20, 22, 24],
+			"ACrit7": [7, 9, 12, 14, 17, 19, 22, 24, 27],
+			"ACrit8": [8, 11, 13, 16, 19, 21, 24, 27, 30],
+			"ACrit9": [9, 12, 15, 18, 22, 25, 28, 31, 35],
+			"ACrit10": [10, 14, 18, 22, 26, 30, 34, 38, 42],
+			"ACrit11": [11, 15, 20, 24, 29, 33, 38, 42, 47],
+			"ACrit12": [12, 17, 22, 27, 32, 37, 42, 47, 52],
+			"Hit0": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+			"Hit1": [1, 2, 4, 5, 7, 8, 10, 11, 13],
+			"Hit2": [2, 4, 7, 9, 12, 14, 17, 19, 22],
+			"Slashing Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Slashing Critical Damage": ["0x0", "0x3", "1x3", "1x8", "2x8", "2x13", "3x13", "3x21", "4x21"],
+			"Bashing Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
+			"Bashing Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Piercing Damage": ["0x0", "0x1", "1x1", "1x3", "2x3", "2x4", "3x4", "3x7", "4x7"],
+			"Piercing Critical Damage": ["0x0", "0x3", "1x3", "1x8", "2x8", "2x13", "3x13", "3x21", "4x21"],
+			"Frost Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
+			"Frost Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Arcane Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
+			"Arcane Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Fire Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
+			"Fire Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Shock Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
+			"Shock Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Acid Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
+			"Acid Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Barrier15": [15, 18, 22, 27, 34, 43, 54, 68, 85],
+			"Barrier20": [20, 23, 28, 34, 42, 53, 66, 82, 102],
+			"Barrier25": [25, 30, 36, 44, 54, 67, 83, 103, 127],
+			"Barrier30": [30, 40, 52, 67, 86, 110, 140, 177, 222],
+			"base1":[1, 1, 2, 2, 3, 3, 4, 4, 5],
+			"base2":[2, 3, 4, 5, 6, 7, 8, 9, 10],
+			"base3":[3, 4, 6, 7, 9, 10, 12, 13, 15],
+			"base4":[4, 6, 8, 10, 12, 14, 16, 18, 20],
+			"base5":[5, 7, 10, 12, 15, 17, 20, 22, 25]
+			}
+		}
+}
