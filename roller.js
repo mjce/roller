@@ -454,7 +454,7 @@ function magicFinder (category){
         return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1]]);
       }
     } else if (tier == 6){
-      return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1]])
+      return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1]]);
     } else if (tier == 7){
       var roll = roll100();
       if (roll <= 90){
