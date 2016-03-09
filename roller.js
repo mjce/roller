@@ -231,13 +231,12 @@ function firstRoll(variable){
     // output final values to divs
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
     if (document.getElementById("logContent").innerHTML == "") {
+    setCount = 0;
     logMarkSet();
     document.getElementById("logMarkSet").className = "enabled";
     document.getElementById("logMarkSet").disabled = false;
-    document.getElementById("logContent").innerHTML += "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
-  } else {
+    }
     document.getElementById("logContent").innerHTML += "<!--New Entry--> <br>" + "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
-  }
     if ((character.kind != "accessory") && (character.store == true)) {
       count += 1;
       document.getElementById("logContent").innerHTML += "<br>";
@@ -270,6 +269,9 @@ function logMarkSet(){
   div.className = "setHeader";
   document.getElementById("logContent").innerHTML += "<!--New Set-->";
   document.getElementById("logContent").appendChild(div);
+  for (i=1;i<=count;i++){
+      handleButton(i);
+  }
   localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
 
