@@ -42,10 +42,26 @@ function xmlRequests () {
           magicObj = masterTable.magic;
           storeList = masterTable.store;
           specialList = masterTable.special;
+          document.getElementById("logContent").innerHTML = cookieSearch(document.cookie, "lastlog");
+          count = document.querySelectorAll("#logContent > button").length;
+          var i = 1;
+          while (i <= count){
+            handleButton(i);
+            i++;
+          }
       }
   };
   tableRequest.open("GET", url, true);
   tableRequest.send();
+}
+function cookieSearch(cookie, key){
+  var exists = cookie.indexOf(key);
+  var out = "";
+  if (exists != -1){
+    var end = cookie.indexOf(";", exists);
+    var out = cookie.substring(exists+(key.length), end); 
+  }
+  return out;
 }
 
 function storeCheck(){
@@ -223,6 +239,9 @@ function firstRoll(variable){
         handleButton(i);
       }
     document.getElementById("stat").innerHTML = character.stat;
+    var d = new Date();
+    d.setTime(d.getTime() + 7*24*60*60*1000);
+    document.cookie="lastlog="+document.getElementById("logContent").innerHTML+"; expires=" + d.toUTCString();
     curState = 0;
   }
 
