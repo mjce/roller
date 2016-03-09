@@ -217,11 +217,11 @@ function firstRoll(variable){
       expButton.className = "expButton";
       expButton.appendChild(t2);
       document.getElementById("logContent").appendChild(expButton);
-      for (i=1;i<=count;i++){
-        handleButton(i);
-      }
       document.getElementById("logContent").appendChild(div);
     }
+    for (i=1;i<=count;i++){
+        handleButton(i);
+      }
     document.getElementById("stat").innerHTML = character.stat;
     curState = 0;
   }
