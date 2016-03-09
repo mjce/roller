@@ -59,7 +59,8 @@ function cookieSearch(cookie, key){
   var out = "";
   if (exists != -1){
     var end = cookie.indexOf(";", exists);
-    var out = cookie.substring(exists+(key.length), end); 
+    exists += key.length;
+    var out = cookie.substring(exists, end); 
   }
   return out;
 }
