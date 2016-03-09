@@ -42,8 +42,16 @@ function xmlRequests () {
           magicObj = masterTable.magic;
           storeList = masterTable.store;
           specialList = masterTable.special;
-          document.getElementById("logContent").innerHTML = cookieSearch(document.cookie, "lastlog=");
+          if(!localStorage["lastlog"]){
+          localStorage["lastlog"] = "";
+          }
+          document.getElementById("logContent").innerHTML = localStorage["lastlog"];
           count = document.querySelectorAll("#logContent > button").length;
+          setCount = setCheck();
+          if (setCount > 0){
+            document.getElementById("logMarkSet").className = "enabled";
+            document.getElementById("logMarkSet").disabled = false;
+          }
           var i = 1;
           while (i <= count){
             handleButton(i);
@@ -54,15 +62,24 @@ function xmlRequests () {
   tableRequest.open("GET", url, true);
   tableRequest.send();
 }
-function cookieSearch(cookie, key){
-  var exists = cookie.indexOf(key);
-  var out = "";
-  if (exists != -1){
-    var end = cookie.indexOf(";", exists);
-    exists += key.length;
-    var out = cookie.substring(exists, end); 
-  }
-  return out;
+
+function setCheck(){
+  var logString = document.getElementById("logContent").innerHTML;
+  var curMatch = 0;
+  var lastMatch = 0;
+  var tempSetCount = 0;
+  do {
+    curMatch = logString.indexOf("<!--New Set-->", lastMatch+1);
+    tempSetCount +=1;
+    if (curMatch == -1){
+      if (lastMatch = 0){
+      tempSetCount = 0;
+      }
+    }
+    lastMatch = curMatch;
+  } while(curMatch != -1);
+  alert(tempSetCount);
+  return tempSetCount;
 }
 
 function storeCheck(){
@@ -94,6 +111,7 @@ function clearLogAll(){
   document.getElementById("logMarkSet").disabled = true;
   document.getElementById("logMarkSet").className = "disabled";
   document.getElementById("logContent").innerHTML = "";
+  localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
 
 function clearLogLast(){
@@ -112,7 +130,7 @@ function clearLogLast(){
       if (logString.substring(lastMatch).indexOf("<button") != -1){
         count -= 1;
       }
-      if (logString.substring(lastMatch).indexOf("Set ") != -1){
+      if (logString.substring(lastMatch).indexOf("<!--New Set-->") != -1){
         setCount -= 1;
         if (setCount <= 0) {
           document.getElementById("logMarkSet").disabled = true;
@@ -130,6 +148,7 @@ function clearLogLast(){
   for (i=1;i<=count;i++){
     handleButton(i);
   }
+  localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
 
 function firstRoll(variable){
@@ -240,9 +259,7 @@ function firstRoll(variable){
         handleButton(i);
       }
     document.getElementById("stat").innerHTML = character.stat;
-    var d = new Date();
-    d.setTime(d.getTime() + 7*24*60*60*1000);
-    document.cookie="lastlog="+document.getElementById("logContent").innerHTML+"; expires=" + d.toUTCString();
+    localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     curState = 0;
   }
 
