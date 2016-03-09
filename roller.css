@@ -73,6 +73,7 @@ button:hover{
 }
 .expButton{
   user-select: none;
+  -webkit-user-select: none;
 }
 .floatingHeader {
   position: absolute;
@@ -98,6 +99,7 @@ button:hover{
   padding-top: 10px;
   margin-bottom: 10px;
   border-bottom: 1.5px solid black;
+  line-height: 2;
 }
 #logButtons{
   display: inline-block;
