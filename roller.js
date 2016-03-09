@@ -42,7 +42,7 @@ function xmlRequests () {
           magicObj = masterTable.magic;
           storeList = masterTable.store;
           specialList = masterTable.special;
-          document.getElementById("logContent").innerHTML = cookieSearch(document.cookie, "lastlog");
+          document.getElementById("logContent").innerHTML = cookieSearch(document.cookie, "lastlog=");
           count = document.querySelectorAll("#logContent > button").length;
           var i = 1;
           while (i <= count){
