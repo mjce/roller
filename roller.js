@@ -20,6 +20,8 @@ curState = 0;
 character = {class: "delver", tier: "tier6", kind:"none", equipment:"Crystal Barrier (Red)", special: "", magic: "", stat: ""};
 output = "";
 itemType = "";
+count = 0;
+setCount = 0;
 
 function xmlRequests () {
   //this runs on load, so it's part wrapper and part xml request.  should probably be split into two.
@@ -70,18 +72,36 @@ function typeItem(){
 }
 function clearLogAll(){
   //replaces all log data with an empty string
+  count = 0;
+  setCount = 0;
+  document.getElementById("logMarkSet").disabled = true;
+  document.getElementById("logMarkSet").className = "disabled";
   document.getElementById("logContent").innerHTML = "";
 }
 
 function clearLogLast(){
-  //finds the location of the last "<br> <br>" in the log, sets log to substring
+  //finds the location of the last "<!--New Entry-->" in the log, sets log to substring
   //up to that point. If it finds none, it replaces the log with an empty string
   var logString = document.getElementById("logContent").innerHTML;
   var lastMatch = 0;
   var curMatch = 0;
   do {
-    curMatch = logString.indexOf("<br> <br>", lastMatch+1);
+    curMatch = logString.indexOf("<!--New Entry-->", lastMatch+1);
+    quickMatch = logString.indexOf("<!--New Set-->", lastMatch+1);
+    if (quickMatch > curMatch){
+      curMatch = quickMatch;
+    }
     if (curMatch == -1){
+      if (logString.substring(lastMatch).indexOf("<button") != -1){
+        count -= 1;
+      }
+      if (logString.substring(lastMatch).indexOf("Set ") != -1){
+        setCount -= 1;
+        if (setCount <= 0) {
+          document.getElementById("logMarkSet").disabled = true;
+          document.getElementById("logMarkSet").className = "disabled";
+        }
+      }
       if (lastMatch == 0){
       document.getElementById("logContent").innerHTML = "";
       } else {
@@ -90,6 +110,9 @@ function clearLogLast(){
     }
     lastMatch = curMatch;
   } while(curMatch != -1);
+  for (i=1;i<=count;i++){
+    handleButton(i);
+  }
 }
 
 function firstRoll(variable){
@@ -173,14 +196,59 @@ function firstRoll(variable){
     // output final values to divs
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
     if (document.getElementById("logContent").innerHTML == "") {
+    logMarkSet();
+    document.getElementById("logMarkSet").className = "enabled";
+    document.getElementById("logMarkSet").disabled = false;
     document.getElementById("logContent").innerHTML += "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
   } else {
-    document.getElementById("logContent").innerHTML += "<br /> <br />" + "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
+    document.getElementById("logContent").innerHTML += "<!--New Entry--> <br>" + "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
   }
+    if ((character.kind != "accessory") && (character.store == true)) {
+      count += 1;
+      document.getElementById("logContent").innerHTML += "<br>";
+      var div = document.createElement("DIV");
+      var expButton = document.createElement("BUTTON");
+      var t2 = document.createTextNode("Show Stats");
+      var divName = "statDiv" + count;
+      div.id = divName;
+      div.className = "invisible";
+      div.innerHTML = character.stat;
+      expButton.id = divName + "button";
+      expButton.className = "expButton";
+      expButton.appendChild(t2);
+      document.getElementById("logContent").appendChild(expButton);
+      for (i=1;i<=count;i++){
+        handleButton(i);
+      }
+      document.getElementById("logContent").appendChild(div);
+    }
     document.getElementById("stat").innerHTML = character.stat;
     curState = 0;
   }
 
+}
+function logMarkSet(){
+  setCount += 1;
+  var div = document.createElement("DIV");
+  if (document.getElementById("logContent").innerHTML == ""){
+    div.style.margin = "0px 0px 10px 0px";
+  }
+  div.innerHTML = "<b>Set " + setCount + "</b>";
+  div.className = "setHeader";
+  document.getElementById("logContent").innerHTML += "<!--New Set-->";
+  document.getElementById("logContent").appendChild(div);
+}
+function handleButton(i){
+  document.getElementById("statDiv"+i+"button").onclick = function (){
+    this.swap = document.getElementById(this.id.toString().substring(0, this.id.length - 6));
+    if (this.swap.className == "visible") {
+      this.swap.className = "invisible";
+      this.innerHTML = "Show Stats";
+    } else {
+      this.swap.className = "visible";
+      this.innerHTML = "Hide Stats";
+    }
+  }
 }
 
 function formatOutput(){

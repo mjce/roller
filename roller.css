@@ -42,7 +42,7 @@ button:hover{
   margin-right: 10px;
   padding: 10px;
   float: left;
-  min-height: inherit;
+  min-height: 85px;
 }
 #result {
   height: auto;
@@ -57,6 +57,22 @@ button:hover{
 }
 #stat{
   height: auto;
+}
+.invisible {
+  display: none;
+}
+.visible {
+  display: inherit;
+  padding: 0px 0px 0px 0px;
+  margin-top: 10px;
+  color: gray;
+}
+.setHeader {
+  border-bottom: 1px solid black;
+  margin-top: 10px;
+}
+.expButton{
+  user-select: none;
 }
 .floatingHeader {
   position: absolute;
@@ -78,7 +94,8 @@ button:hover{
   margin-bottom: 5px;
 }
 #logContent{
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   margin-bottom: 10px;
   border-bottom: 1.5px solid black;
 }
