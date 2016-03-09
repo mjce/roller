@@ -78,7 +78,6 @@ function setCheck(){
     }
     lastMatch = curMatch;
   } while(curMatch != -1);
-  alert(tempSetCount);
   return tempSetCount;
 }
 
@@ -267,14 +266,13 @@ function firstRoll(variable){
 function logMarkSet(){
   setCount += 1;
   var div = document.createElement("DIV");
-  if (document.getElementById("logContent").innerHTML == ""){
-    div.style.margin = "0px 0px 10px 0px";
-  }
   div.innerHTML = "<b>Set " + setCount + "</b>";
   div.className = "setHeader";
   document.getElementById("logContent").innerHTML += "<!--New Set-->";
   document.getElementById("logContent").appendChild(div);
+  localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
+
 function handleButton(i){
   document.getElementById("statDiv"+i+"button").onclick = function (){
     this.swap = document.getElementById(this.id.toString().substring(0, this.id.length - 6));
