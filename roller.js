@@ -42,10 +42,43 @@ function xmlRequests () {
           magicObj = masterTable.magic;
           storeList = masterTable.store;
           specialList = masterTable.special;
+          if(!localStorage["lastlog"]){
+          localStorage["lastlog"] = "";
+          }
+          document.getElementById("logContent").innerHTML = localStorage["lastlog"];
+          count = document.querySelectorAll("#logContent > button").length;
+          setCount = setCheck();
+          if (setCount > 0){
+            document.getElementById("logMarkSet").className = "enabled";
+            document.getElementById("logMarkSet").disabled = false;
+          }
+          var i = 1;
+          while (i <= count){
+            handleButton(i);
+            i++;
+          }
       }
   };
   tableRequest.open("GET", url, true);
   tableRequest.send();
+}
+
+function setCheck(){
+  var logString = document.getElementById("logContent").innerHTML;
+  var curMatch = 0;
+  var lastMatch = 0;
+  var tempSetCount = 0;
+  do {
+    curMatch = logString.indexOf("<!--New Set-->", lastMatch+1);
+    tempSetCount +=1;
+    if (curMatch == -1){
+      if (lastMatch = 0){
+      tempSetCount = 0;
+      }
+    }
+    lastMatch = curMatch;
+  } while(curMatch != -1);
+  return tempSetCount;
 }
 
 function storeCheck(){
@@ -77,6 +110,7 @@ function clearLogAll(){
   document.getElementById("logMarkSet").disabled = true;
   document.getElementById("logMarkSet").className = "disabled";
   document.getElementById("logContent").innerHTML = "";
+  localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
 
 function clearLogLast(){
@@ -95,7 +129,7 @@ function clearLogLast(){
       if (logString.substring(lastMatch).indexOf("<button") != -1){
         count -= 1;
       }
-      if (logString.substring(lastMatch).indexOf("Set ") != -1){
+      if (logString.substring(lastMatch).indexOf("<!--New Set-->") != -1){
         setCount -= 1;
         if (setCount <= 0) {
           document.getElementById("logMarkSet").disabled = true;
@@ -113,6 +147,7 @@ function clearLogLast(){
   for (i=1;i<=count;i++){
     handleButton(i);
   }
+  localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
 
 function firstRoll(variable){
@@ -196,13 +231,12 @@ function firstRoll(variable){
     // output final values to divs
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
     if (document.getElementById("logContent").innerHTML == "") {
+    setCount = 0;
     logMarkSet();
     document.getElementById("logMarkSet").className = "enabled";
     document.getElementById("logMarkSet").disabled = false;
-    document.getElementById("logContent").innerHTML += "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
-  } else {
+    }
     document.getElementById("logContent").innerHTML += "<!--New Entry--> <br>" + "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
-  }
     if ((character.kind != "accessory") && (character.store == true)) {
       count += 1;
       document.getElementById("logContent").innerHTML += "<br>";
@@ -223,6 +257,7 @@ function firstRoll(variable){
         handleButton(i);
       }
     document.getElementById("stat").innerHTML = character.stat;
+    localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     curState = 0;
   }
 
@@ -230,14 +265,16 @@ function firstRoll(variable){
 function logMarkSet(){
   setCount += 1;
   var div = document.createElement("DIV");
-  if (document.getElementById("logContent").innerHTML == ""){
-    div.style.margin = "0px 0px 10px 0px";
-  }
   div.innerHTML = "<b>Set " + setCount + "</b>";
   div.className = "setHeader";
   document.getElementById("logContent").innerHTML += "<!--New Set-->";
   document.getElementById("logContent").appendChild(div);
+  for (i=1;i<=count;i++){
+      handleButton(i);
+  }
+  localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
+
 function handleButton(i){
   document.getElementById("statDiv"+i+"button").onclick = function (){
     this.swap = document.getElementById(this.id.toString().substring(0, this.id.length - 6));
@@ -417,7 +454,7 @@ function magicFinder (category){
         return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1]]);
       }
     } else if (tier == 6){
-      return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1]])
+      return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1]]);
     } else if (tier == 7){
       var roll = roll100();
       if (roll <= 90){
