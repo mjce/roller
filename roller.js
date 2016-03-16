@@ -175,11 +175,13 @@ function firstRoll(variable){
     character.store = storeCheck();
     //roll on a series of tables to determine item type, return string or object
     if (document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value != "none"){
+      character.store = true;
       if (document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value == "none"){
         curState = 1;
         return firstRoll(document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value);
       } else {
         curState = 2;
+        character.kind = document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value;
         return firstRoll(document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value);
       }
     }
