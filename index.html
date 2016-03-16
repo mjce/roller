@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Matt Cardinal">
     <meta name="description" content="A dice roller for Descension.">
-    <meta name=viewport content ="width=600">
+    <meta name=viewport content ="width=800">
   </head>
   <body>
     <div id="wrapper">
@@ -44,6 +44,22 @@
         <div id="controls">
         </div>
         <div id ="stat"></div>
+        <div id = "seed">
+          Seed (Optional):
+          <select id="seedItemList">
+            <option selected>store</option>
+          </select>
+          <select id="seedItemType" onchange="onChangeSeedItemType();">
+            <option selected>none</option>
+            <option>weapon</option>
+            <option>armor</option>
+            <option>offhand</option>
+            <option>accessory</option>
+          </select>
+          <select id="seedSubtype">
+            <option selected>none</option>
+          </select>
+        </div>
     </div>
     <div id="log">
       <div id="logHeader" class="bold">
