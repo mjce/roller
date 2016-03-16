@@ -28,6 +28,7 @@ button:hover{
 }
 #form{
   margin-bottom: 10px;
+  display: inline-block;
 }
 .disabled {
   opacity: 0.6;
@@ -88,6 +89,14 @@ button:hover{
 }
 .bold{
   font-weight: bold;
+}
+#seed{
+  margin-top: 10px;
+  margin-right:auto;
+  border-top: 1.5px solid black;
+  padding: 10px 0px 0px 0px;
+  font-weight: bold;
+  display: inline-block;
 }
 #logHeader{
   border-bottom: 1.5px solid black;

@@ -17,7 +17,7 @@ Version Notes (1.2):
 
 // most of these global variables should be moved into the functions themselves.
 curState = 0;
-character = {class: "delver", tier: "tier6", kind:"none", equipment:"Crystal Barrier (Red)", special: "", magic: "", stat: ""};
+character = {class: "delver", tier: "tier6", kind:"none", equipment:"none", special: "", magic: "", stat: "", source: "store"};
 output = "";
 itemType = "";
 count = 0;
@@ -42,6 +42,8 @@ function xmlRequests () {
           magicObj = masterTable.magic;
           storeList = masterTable.store;
           specialList = masterTable.special;
+          document.getElementById("seedItemType").selectedIndex = 0;
+          onChangeSeedItemType();
           if(!localStorage["lastlog"]){
           localStorage["lastlog"] = "";
           }
@@ -172,6 +174,16 @@ function firstRoll(variable){
     //check if the item is a store item, set character.store to boolean
     character.store = storeCheck();
     //roll on a series of tables to determine item type, return string or object
+    if (document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value != "none"){
+      character.store = true;
+      if (document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value == "none"){
+        curState = 1;
+        return firstRoll(document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value);
+      } else {
+        curState = 2;
+        return firstRoll(document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value);
+      }
+    }
     itemType = typeItem();
     if (typeof itemType == "object"){
       output = "Choose your item type:";
@@ -259,6 +271,8 @@ function firstRoll(variable){
     document.getElementById("stat").innerHTML = character.stat;
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     curState = 0;
+    document.getElementById("seedItemType").selectedIndex = 0;
+    document.getElementById("seedSubtype").selectedIndex = 0;
   }
 
 }
@@ -490,6 +504,37 @@ function armorLoop(previous){
       }
     }
   }
+}
+
+function onChangeSeedItemType(){
+  var typeSelect = document.getElementById("seedItemType");
+  character.kind = typeSelect.options[typeSelect.selectedIndex].value;
+  document.getElementById("seedSubtype").innerHTML = "";
+  if (character.kind != "accessory"){
+    return createSelect(masterTable[character.source][character.type], "seedSubtype");
+  } else {
+    return createSelect([], "seedSubtype");
+  }
+}
+
+function createSelect(list, id){
+  //looks through table for members of item type, and outputs all non-duplicates as alphabetized options in a select element
+  var tempList = [];
+  for (member in list) {
+    for (entry in list[member]){
+      if (tempList.indexOf(list[member][entry]) == -1){
+        tempList.push(list[member][entry]);
+      }
+      }
+    }
+    tempList = tempList.sort();
+    tempList.unshift("none");
+    for (thing in tempList){
+      var option = document.createElement("OPTION");
+      var t = document.createTextNode(tempList[thing]);
+      option.appendChild(t);
+      document.getElementById(id).appendChild(option);
+    }
 }
 
 function getStats(){
