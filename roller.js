@@ -175,7 +175,6 @@ function firstRoll(variable){
     character.store = storeCheck();
     //roll on a series of tables to determine item type, return string or object
     if (document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value != "none"){
-      character.store = true;
       if (document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value == "none"){
         curState = 1;
         return firstRoll(document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value);
@@ -511,7 +510,7 @@ function onChangeSeedItemType(){
   character.kind = typeSelect.options[typeSelect.selectedIndex].value;
   document.getElementById("seedSubtype").innerHTML = "";
   if (character.kind != "accessory"){
-    return createSelect(masterTable[character.source][character.type], "seedSubtype");
+    return createSelect(masterTable[character.source][character.kind], "seedSubtype");
   } else {
     return createSelect([], "seedSubtype");
   }
