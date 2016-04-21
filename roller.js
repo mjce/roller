@@ -35,6 +35,18 @@ function xmlRequests () {
   curState = 0;
   var tableRequest = new XMLHttpRequest();
   var url = "rollJSON.txt";
+  function checkLocal(){
+    //checks to see if values have been initialized to local storage. If they have not, it initializes them.
+    if(!localStorage["lastlog"]){
+    localStorage["lastlog"] = "";
+    }
+    if(!localStorage["lastresult"]){
+    localStorage["lastresult"] = "Congratulations, adventurer! Roll your item!";
+    }
+    if(!localStorage["laststat"]){
+    localStorage["laststat"] = "";
+    }
+  }
   tableRequest.onreadystatechange = function() {
       if (tableRequest.readyState == 4 && tableRequest.status == 200) {
           masterTable = JSON.parse(tableRequest.responseText);
@@ -44,9 +56,9 @@ function xmlRequests () {
           specialList = masterTable.special;
           document.getElementById("seedItemType").selectedIndex = 0;
           onChangeSeedItemType();
-          if(!localStorage["lastlog"]){
-          localStorage["lastlog"] = "";
-          }
+          checkLocal();
+          document.getElementById("stat").innerHTML = localStorage["laststat"];
+          document.getElementById("result").innerHTML = localStorage["lastresult"];
           document.getElementById("logContent").innerHTML = localStorage["lastlog"];
           count = document.querySelectorAll("#logContent > button").length;
           setCount = setCheck();
@@ -271,6 +283,8 @@ function firstRoll(variable){
       }
     document.getElementById("stat").innerHTML = character.stat;
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
+    localStorage["laststat"] = document.getElementById("stat").innerHTML;
+    localStorage["lastresult"] = document.getElementById("result").innerHTML;
     curState = 0;
     document.getElementById("seedItemType").selectedIndex = 0;
     document.getElementById("seedSubtype").selectedIndex = 0;
@@ -585,7 +599,7 @@ function getStats(){
       var newStat = progressionTable[searchString][tierIndex];
       // gets damage numbers from a string
       if (dieNum){
-        dieNum += dieNum*Number(newStat.substring(0, newStat.indexOf("x")));
+        dieNum += Number(newStat.substring(0, newStat.indexOf("x")));
         dmgNum += Number(newStat.substring(newStat.indexOf("x")+1, newStat.length));
         newStat = dieNum;
       }
