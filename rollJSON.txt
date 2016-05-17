@@ -10,6 +10,54 @@
 	[17, ["weapon", "accessory"]],
 	[20, ["weapon", "offhand", "armor", "accessory"]]
 	],
+"special": {
+"weapon":
+	[
+	["Repeating Crossbow", "Throwing Axes"],
+	["Throwing Axes", "Punching Daggers"],
+	["Punching Daggers", "Katana"],
+	["Katana", "Rapier"],
+	["Rapier", "Javelins"],
+	["Javelins", "Composite Bow"],
+	["Composite Bow", "Staff of Clout"],
+	["Staff of Clout", "Poleaxe"],
+	["Punching Daggers", "Katana"],
+	["Poleaxe", "Throwing Stars"],
+	["Throwing Stars", "Spiked Shield"],
+	["Spiked Shield", "Repeating Crossbow"]
+	],
+"armor":
+	[
+	["Mystic Robes"],
+	["Hide Armor"],
+	["Layered Cape"],
+	["Leafbraid"],
+	["Sacred Tattoos"],
+	["Crystal Embedded Plate"]
+	],
+"offhand":
+	[
+	["Bouche", "Crystal Barrier (Black)"],
+	["Crystal Barrier (Black)", "Pet Tame"],
+	["Pet Tame", "Pavise"],
+	["Pavise", "Crystal Barrier (Yellow)"],
+	["Crystal Barrier (Yellow)", "Tonfa Guard"],
+	["Tonfa Guard", "Bouche"]
+	],
+"accessory":
+	[
+	["Rope Bracer"],
+	["Quick Boots"],
+	["Scholar's Glasses"],
+	["Ring of Vitality"],
+	["Hooked Gloves"],
+	["Extending Cloak"],
+	["Bandana"],
+	["Sticky Spore Pauldrons"],
+	["Sliding Boots"],
+	["Toadstool Fedora"]
+	]
+},
 "store":
 	{
 	"weapon":
@@ -57,71 +105,133 @@
 		{
 		"tier1":
 			{
-			"primary": ["1d3", 1],
-			"secondary": ["", 0]
+			"primary": "01d3+1",
+			"secondary": "0"
 			},
 		"tier2":
 			{
-			"primary": ["1d4", 1],
-			"secondary": ["", 0]
+			"primary": "01d4+1",
+			"secondary": "0"
 			},
 		"tier3":
 			{
-			"primary": ["1d6", 1],
-			"secondary": ["1d2", 0]
+			"primary": "01d6+1",
+			"secondary": "01d2+0"
 			},
 		"tier4":
 			{
-			"primary": ["2d4", 0],
-			"secondary": ["1d2", 0]
+			"primary": "02d4",
+			"secondary": "01d2+0"
 			},
 		"tier5":
 			{
-			"primary": ["2d4", 1],
-			"secondary": ["1d2", 1]
+			"primary": "02d4+1",
+			"secondary": "01d2+1"
 			},
 		"tier6":
 			{
-			"primary": ["3d3", 1],
-			"secondary": ["1d2", 1]
+			"primary": "03d3+1",
+			"secondary": "01d2+1"
 			},
 		"tier7":
 			{
-			"primary": ["3d4", 1],
-			"secondary": ["1d4", 1]
+			"primary": "03d4+1",
+			"secondary": "01d4+1"
 			},
 		"tier8":
 			{
-			"primary": ["2d6", 2],
-			"secondary": ["1d4", 1]
+			"primary": "02d6+2",
+			"secondary": "01d4+1"
 			},
 		"tier9":
 			{
-			"primary": ["2d6", 4],
-			"secondary": ["1d6", 1]
+			"primary": "02d6+4",
+			"secondary": "01d6+1"
 			}
 		},
 	"weapon":
 		{
-		"tier1":
-			[0, 0, 0],
-		"tier2":
-			[90, 100, 0],
-		"tier3":
-			[90, 100, 0],
-		"tier4":
-			[90, 100, 0],
-		"tier5":
-			[90, 100, 0],
-		"tier6":
-			[90, 100, 0],
-		"tier7":
-			[90, 96, 100],
-		"tier8":
-			[80, 100, 0],
-		"tier9":
-			[90, 100, 0]
-		}
+		"Sharp":
+			["Attack", ["+01d3+0", "+01d4+0", "+01d6+0", "+01d6+1", "+02d4+0", "+02d6+0", "+02d6+2", "+03d6+2", "+03d6+5"]],
+		"Lethal":
+			["Damage", ["+01d3+0", "+01d4+0", "+01d6+0", "+01d6+1", "+02d4+0", "+02d6+0", "+02d6+2", "+03d6+2", "+03d6+5"]],
+		"Erratic":
+			["Critical Damage", ["+0b+4", "+1b+4", "+1b+9", "+2b+9", "+2b+15", "+3b+15", "+3b+21", "+4b+21", "+3b+28"]],
+		"Flaming":
+			["Fire Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
+		"Electric":
+			["Shock Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
+		"Frost":
+			["Frost Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
+		"Corrosive":
+			["Corrosive Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
+		"Arcane":
+			["Arcane Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
+		"Bloody":
+			["Damage Over Time", ["10%, Duration 0d2+1", "10%, Duration 01d2+0", "10%, Duration 01d4+0", "10%, Duration 01d6+0", "25%, Duration 01d3+0", "25%, Duration 01d4+0", "25%, Duration 01d6+0", "25%, Duration 01d8+0", "25%, Duration 01d6+3"]],
+		"Piercing":
+			["Bypass Barrier DR", ["+0d2+5", "+0d2+7", "+0d2+10", "+0d2+14", "+0d2+19", "+0d2+26", "+0d2+33", "+0d2+41", "+0d2+50"]],
+		"Opportunistic":
+			["Extra Attacks of Opportunity", ["+0d2+1 AoO", "+0d2+1 AoO", "+0d2+1 AoO", "+01d2+0 AoO", "+01d2+0 AoO", "+01d2+0 AoO", "+01d3+0 AoO", "+01d3+0 AoO", "+01d2+1 AoO"]],
+		"Agile":
+			["Movement (Cells)", ["+0d2+1", "+01d2+0", "+0d2+2", "+0d2+2", "+01d2+1", "+0d2+3", "+01d2+2", "+0d2+4", "+01d2+3"]],
+		"Extending":
+			["Melee Range", ["0", "0", "0", "+0d2+1", "+0d2+1", "+0d2+1", "+0d2+1", "+0d2+2", "+0d2+2"]],
+		"Powerful":
+			["Ranged Range", ["+0d2+1", "+0d2+1", "+0d2+2", "+0d2+2", "+0d2+3", "+0d2+3", "+0d2+4", "+0d2+4", "+0d2+5"]],
+		"Spry":
+			["Extra Actions", ["1 Swift", "1 Swift", "3/4 Swift, 1/4 Move", "1/4 Swift, 3/4 Move", "1 Move", "3/4 Move, 1/4 Standard", "1/4 Move, 3/4 Standard", "1 Standard", "1/2 Standard, 1/2 Full"]],
+		"S-Class":
+			["Ability Rune", ["1","1","1","1","1","1","1","1","1"]]
+		},
+	"armor":
+		{
+		"Retardant":
+			["DR", ["+01d6+0 vs. Fire", "+01d6+1 vs. Fire", "+02d4+0 vs. Fire", "+02d6+0 vs. Fire", "+02d6+2 vs. Fire", "+03d6+2 vs. Fire", "+03d6+5 vs. Fire", "+04d6+4 vs. Fire", "+04d6+8 vs. Fire"]],
+		"Negating":
+			["DR", ["+01d6+0 vs. Arcane", "+01d6+1 vs. Arcane", "+02d4+0 vs. Arcane", "+02d6+0 vs. Arcane", "+02d6+2 vs. Arcane", "+03d6+2 vs. Arcane", "+03d6+5 vs. Arcane", "+04d6+4 vs. Arcane", "+04d6+8 vs. Arcane"]],
+		"Neutralizing":
+			["DR", ["+01d6+0 vs. Acid", "+01d6+1 vs. Acid", "+02d4+0 vs. Acid", "+02d6+0 vs. Acid", "+02d6+2 vs. Acid", "+03d6+2 vs. Acid", "+03d6+5 vs. Acid", "+04d6+4 vs. Acid", "+04d6+8 vs. Acid"]],
+		"Tepid":
+			["DR", ["+01d6+0 vs. Frost", "+01d6+1 vs. Frost", "+02d4+0 vs. Frost", "+02d6+0 vs. Frost", "+02d6+2 vs. Frost", "+03d6+2 vs. Frost", "+03d6+5 vs. Frost", "+04d6+4 vs. Frost", "+04d6+8 vs. Frost"]],
+		"Grounded":
+			["DR", ["+01d6+0 vs. Shock", "+01d6+1 vs. Shock", "+02d4+0 vs. Shock", "+02d6+0 vs. Shock", "+02d6+2 vs. Shock", "+03d6+2 vs. Shock", "+03d6+5 vs. Shock", "+04d6+4 vs. Shock", "+04d6+8 vs. Shock"]],
+		"Fortified":
+			["ACrit", ["+3", "+4", "+5", "+6", "+8", "+10", "+12", "+14", "+16"]],
+		"Reinforced":
+			["AC", ["+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9"]],
+		"Mobile":
+			["Movement", ["+0d2+1", "+0d2+1", "+01d2+0", "+01d3+0", "+ 01d3+0", "+01d4+0", "+01d4+1", "+01d4+2", "+01d4+2"]],
+		"Resistant":
+			["Saves", ["+0d2+1", "+0d2+1", "+01d2+0", "+01d3+0", "+01d3+0", "+01d4+0", "+01d4+1", "+01d4+2", "+01d4+2"]],
+		"Intense":
+			["Resource", ["+01d6+0", "+02d4+0", "+02d6+0", "+03d4+0", "+03d6+0", "+03d8+0", "+04d8+0", "+06d6+0", "+08d6+0"]],
+		"Quenched":
+			["Potion Use", ["+0d2+1 /day", "+0d2+1 /day", "+0d2+1 /day", "+01d2+0 /day", "+01d2+0 /day", "+ 01d2+0 /day", "+0d2+2 /day", "+0d2+2 /day", "+0d2+2 /day"]],
+		"Homebound":
+			["Faster Warp", ["0d2+2 Rounds", "0d2+2 Rounds", "0d2+2 Rounds", "01d2+0 Round(s)", "01d2+0 Round(s)", "01d2+0 Round(s)", "0d2+1 Round", "0d2+1 Round", "0d2+1 Round"]],
+		"of Ease":
+			["Reduced Requirements", ["-0d2+1 To All Requirements", "-01d2+0 To All Requirements", "-01d2+0 To All Requirements", "-0d2+2 To All Requirements", "-01d2+1 To All Requirements", "-01d2+1 To All Requirements", "-0d2+3 To All Requirements", "-01d2+2 To All Requirements", "-01d2+2 To All Requirements"]]
+		},
+	"offhand":
+	{
+	"Energized":
+		["Barrier Increase", ["10%", "15%", "20%", "25%", "30%", "35%", "40%", "45%", "50%"]],
+	"Hardy":
+		["HP", ["+02d4+0", "+02d6+0", "+03d4+0", "+03d6+0", "+03d8+0", "+04d8+0", "+06d6+0", "+08d6+0", "+10d6+0"]],
+	"Vampiric":
+		["Life Leech", ["0d2+1", "01d2+0", "0d2+2", "01d2+2", "0d2+3", "01d2+2", "0d2+4", "01d2+3", "0d2+5"]],
+	"Evasive":
+			["Dodge chance", ["10%", "10%", "10cf5%", "15%", "15%", "15cf5%", "20%", "20%", "20cf5%"]],
+	"Holy":
+			["Improved Healing", ["+01d6+0", "+01d6+0", "+01d6+0", "+01d6+0", "+02d6+0", "+02d6+0", "+02d6+0", "+02d6+0", "+03d6+0"]],
+	"Thorned":
+			["Thorn Damage", ["1", "2", "3", "4", "5", "7", "9", "11", "13"]],
+	"Harrying":
+			["Spell Thorn Damage", ["2", "3", "4", "6", "8", "10", "13", "16", "20"]],
+	"Acute":
+			["Resource", ["+01d3+0", "+01d4+0", "+01d6+0", "+01d6+1", "+01d8+1", "+02d6+0", "+02d8+0", "+03d6+0", "+04d6+0"]]
+	}
 	},
 "magic":
 	{
@@ -186,7 +296,7 @@
 			[6, "of Attunement"],
 			[10, "of Power"],
 			[15, "of Finesse"],
-			[16, ["of Charm", "of of Stamina"]],
+			[16, ["of Charm", "of Stamina"]],
 			[17, ["of Stamina", "of Attunement"]],
 			[18, ["of Power", "of Attunement"]],
 			[19, ["of Power", "of Finesse"]],
@@ -279,35 +389,76 @@
 		{
 		"base":
 			{
-			"Tower Shield": [["DR", "2/Shock"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 5], ["Special Stats", "Can provide cover"], ["Value", "Unknown"]],
-			"Crystal Barrier (Blue)": [["DR", "5/Acid"], ["AC", 0], ["Barrier", 15], ["ACrit", 2], ["Attunement Requirement", 4],["Special Stats", "None"], ["Value", "Unknown"]],
-			"Buckler": [["DR", "0/Acid"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 1], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Crystal Barrier (Red)": [["DR", "2/Frost"], ["AC", 0], ["Barrier", 30], ["ACrit", 2], ["Attunement Requirement", 2],["Special Stats", "None"], ["Value", "Unknown"]],
-			"Round Shield": [["DR", "0/Fire"], ["AC", 3], ["ACrit", 5], ["Power Requirement", 2], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Kite Shield": [["DR", "1/Shock"], ["AC", 1], ["ACrit", 3], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Crystal Barrier (Green)": [["DR", "3/Fire"], ["AC", 0], ["Barrier", 25], ["ACrit", 2], ["Attunement Requirement", 3],["Special Stats", "None"], ["Value", "Unknown"]],
-			"Longspear": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "3d8+0"], ["Range", 2], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Ignition Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Fire Damage", "1d6+0"], ["Fire Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Shortbow": [["Piercing Damage", "1d6+0"], ["Piercing Critical Damage", "2d10+0"], ["Range", "1-10"], ["Hands", 2], ["Hit", 0], ["Power Requirement", 2], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Mace": [["Bashing Damage", "2d4+0"], ["Bashing Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 2], ["Power Requirement", 4], ["Special Stats", "Force"], ["Value", "Unknown"]],
-			"Conduit Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Shock Damage", "1d6+0"], ["Shock Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Dagger": [["Piercing Damage", "1d4+0"], ["Piercing Critical Damage", "2d12+4"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 1], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Arcanic Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Arcane Damage", "1d6+0"], ["Arcane Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Frigid Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Frost Damage", "1d6+0"], ["Frost Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Caustic Staff": [["Bashing Damage", "1d6+0"],["Bashing Critical Damage", "2d6+0"], ["Acid Damage", "1d6+0"], ["Acid Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Crossbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", 8], ["Hands", 2], ["Hit", 2], ["Power Requirement", 2], ["Special Stats", "Move action to load"], ["Value", "Unknown"]],
-			"Greatflail": [["Bashing Damage", "1d8+0"], ["Bashing Critical Damage", "1d12+0"], ["Range", 2], ["Hands", 2], ["Hit", 2], ["Power Requirement", 4], ["Special Stats", "Force"], ["Value", "Unknown"]],
-			"Axe": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "Force"], ["Value", "Unknown"]],
-			"Longbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "2-12"], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Greatsword": [["Slashing Damage", "2d6+0"],["Slashing Critical Damage", "3d6+0"], ["Range", "1-2"], ["Hands", 2], ["Hit", 0], ["Power Requirement", 4], ["Special Stats", "Force"], ["Value", "Unknown"]],
-			"Longsword": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Thinblade": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+2"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "None"], ["Value", "Unknown"]],
-			"Brigandine": [["DR", "2/Acid"], ["Max Finesse", 5], ["AC", 4], ["ACrit", 9], ["Power Requirement", 3],["Value", "Unknown"]],
-			"Leather Jerkin": [["Max Finesse", 12], ["AC", 1], ["ACrit", 4], ["Power Requirement", 1],["Value", "Unknown"]],
-			"Half Plate": [["DR", "3/Shock"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 10], ["Power Requirement", 3],["Value", "Unknown"]],
-			"Padded Jack": [["DR", "1/Fire"], ["Max Finesse", 9], ["AC", 2], ["ACrit", 6], ["Power Requirement", 1],["Value", "Unknown"]],
-			"Mail": [["DR", "2/Frost"], ["Max Finesse", 7], ["AC", 3], ["ACrit", 7], ["Power Requirement", 2],["Value", "Unknown"]],
-			"Full Plate": [["DR", "3/Shock"], ["Max Finesse", 3], ["AC", 5], ["ACrit", 12], ["Power Requirement", 4],["Value", "Unknown"]]
+			"Amulet": [["Flavor", "Thanks for participating."]],
+			"Cape": [["Flavor", "Makes you look mysterious."]],
+			"Gloves": [["Flavor", "Gloving you is easy 'cause you're beautiful..."]],
+			"Necklace": [["Flavor", "The dollar signs are just for decoration."]],
+			"Ring": [["Flavor", "Someone out there likes you."]],
+			"Bracers": [["Flavor", "Makes your forearms bulge with menace."]],
+			"Cloak": [["Flavor", "Complete with dozens of hidden pockets."]],
+			"Headband": [["Flavor", "Don't sweat it."]],
+			"Rope Bracer": [["Special Stats", "Magically stores (10t+20) feet of rope which can untie itself and return at will. 1t+0 Use Rope.  If the rope is cut it disappears in 1t+0 rounds and cannot be summoned again until the next day."]],
+			"Quick Boots": [["Special Stats", "Gain +0.25t+1 Movement and +1t+0 Acrobatics."]],
+			"Scholar's Glasses": [["Special Stats", "Gain +0.5t+1 to all knowledge checks and +0.34t+1 Charm."]],
+			"Ring of Vitality": [["Special Stats", "When unconscious gain 2 DR and fast healing 1."]],
+			"Hooked Gloves": [["Special Stats", "Gain +4 versus disarm and +0.5t+1 to Climb checks.   Unarmed Strikes now deal 1d6/2d6 lethal and do not provoke AoOs. +8 To Obscure checks to conceal this item. Surprise attack grants flanking for 1 attack."]],
+			"Extending Cloak": [["Special Stats", "Can extend 10t+0 feet and form a bridge or a poor barrier as a standard action. If torn through, it retracts and cannot extend until the next day."]],
+			"Bandana": [["Special Stats", "Can open/close unhindered objects and perform 1-pound telekinesis up to 1t+0 cells away. Requires a move action to activate. Swift action to maintain."]],
+			"Sticky Spore Pauldrons": [["Special Stats", "0.34t+1 times per day you can create a 3x3 area of difficult terrain as move action."]],
+			"Sliding Boots": [["Special Stats", "As a move action you may make an Acrobatics check at DC 15+1 for each threatening enemy Tier level along your path. If you succeed, you may move up to 3 cells without provoking attacks of opportunity.  You cannot pass through an enemy's cell.  If you fail, you land on the final cell prone.  Each cell of difficult terrain adds 5 to the DC."]],
+			"Toadstool Fedora": [["Special Stats", "0.34t+1 times per day, you may create a t1:3x3/t4:4x4/t8:5x5/ area of fog (obscuring mist) as a swift action.  Lasts 1t+5 rounds"]],
+			"Tower Shield": [["DR", "2/Shock"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 5], ["Special Stats", "Can provide cover"]],
+			"Crystal Barrier (Blue)": [["DR", "5/Acid"], ["AC", 0], ["Barrier", 15], ["ACrit", 2], ["Attunement Requirement", 4],["Special Stats", "None"]],
+			"Buckler": [["DR", "0/Acid"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 1], ["Special Stats", "None"]],
+			"Crystal Barrier (Red)": [["DR", "2/Frost"], ["AC", 0], ["Barrier", 30], ["ACrit", 2], ["Attunement Requirement", 2],["Special Stats", "None"]],
+			"Round Shield": [["DR", "0/Fire"], ["AC", 3], ["ACrit", 5], ["Power Requirement", 2], ["Special Stats", "None"]],
+			"Kite Shield": [["DR", "1/Shock"], ["AC", 1], ["ACrit", 3], ["Power Requirement", 3], ["Special Stats", "None"]],
+			"Crystal Barrier (Green)": [["DR", "3/Fire"], ["AC", 0], ["Barrier", 25], ["ACrit", 2], ["Attunement Requirement", 3],["Special Stats", "None"]],
+			"Longspear": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "3d8+0"], ["Range", 2], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"]],
+			"Ignition Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Fire Damage", "1d6+0"], ["Fire Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"]],
+			"Shortbow": [["Piercing Damage", "1d6+0"], ["Piercing Critical Damage", "2d10+0"], ["Range", "1-10"], ["Hands", 2], ["Hit", 0], ["Power Requirement", 2], ["Special Stats", "None"]],
+			"Mace": [["Bashing Damage", "2d4+0"], ["Bashing Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 2], ["Power Requirement", 4], ["Special Stats", "Force"]],
+			"Conduit Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Shock Damage", "1d6+0"], ["Shock Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"]],
+			"Dagger": [["Piercing Damage", "1d4+0"], ["Piercing Critical Damage", "2d12+4"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 1], ["Special Stats", "None"]],
+			"Arcanic Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Arcane Damage", "1d6+0"], ["Arcane Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"]],
+			"Frigid Staff": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Frost Damage", "1d6+0"], ["Frost Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"]],
+			"Caustic Staff": [["Bashing Damage", "1d6+0"],["Bashing Critical Damage", "2d6+0"], ["Acid Damage", "1d6+0"], ["Acid Critical Damage", "2d6+0"], ["Range", 1], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 4], ["Special Stats", "None"]],
+			"Crossbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", 8], ["Hands", 2], ["Hit", 2], ["Power Requirement", 2], ["Special Stats", "Move action to load"]],
+			"Greatflail": [["Bashing Damage", "1d8+0"], ["Bashing Critical Damage", "1d12+0"], ["Range", 2], ["Hands", 2], ["Hit", 2], ["Power Requirement", 4], ["Special Stats", "Force"]],
+			"Axe": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "Force"]],
+			"Longbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "2-12"], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"]],
+			"Greatsword": [["Slashing Damage", "2d6+0"],["Slashing Critical Damage", "3d6+0"], ["Range", "1-2"], ["Hands", 2], ["Hit", 0], ["Power Requirement", 4], ["Special Stats", "Force"]],
+			"Longsword": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"]],
+			"Thinblade": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+2"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "None"]],
+			"Brigandine": [["DR", "2/Acid"], ["Max Finesse", 5], ["AC", 4], ["ACrit", 9], ["Power Requirement", 3]],
+			"Leather Jerkin": [["Max Finesse", 12], ["AC", 1], ["ACrit", 4], ["Power Requirement", 1]],
+			"Half Plate": [["DR", "3/Shock"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 10], ["Power Requirement", 3]],
+			"Padded Jack": [["DR", "1/Fire"], ["Max Finesse", 9], ["AC", 2], ["ACrit", 6], ["Power Requirement", 1]],
+			"Mail": [["DR", "2/Frost"], ["Max Finesse", 7], ["AC", 3], ["ACrit", 7], ["Power Requirement", 2]],
+			"Full Plate": [["DR", "3/Shock"], ["Max Finesse", 3], ["AC", 5], ["ACrit", 12], ["Power Requirement", 4]],
+			"Repeating Crossbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "1-8"], ["Hands", 2], ["Hit", 2], ["Power Requirement", 2], ["Special Stats", "Six shots without reload. Move action to reload."]],
+			"Throwing Axes": [["Slashing Damage", "2d4+0"], ["Slashing Critical Damage", "3d4+0"], ["Range", "1-4"], ["Hands", 1], ["Hit", 0], ["Power Requirement", 2], ["Special Stats", "Force"]],
+			"Punching Daggers": [["Piercing Damage", "1d4+0"], ["Piercing Critical Damage", "2d12+4"], ["Range", "1"], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "+4 Obscure to conceal.  Surprise attack from hidden as if flanking."]],
+			"Katana": [["Slashing Damage", "2d8+0"], ["Slashing Critical Damage", "3d8+0"], ["Range", "1"], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Finesse Requirement", 2], ["Special Stats", "None"]],
+			"Rapier": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+2"], ["Range", "1"], ["Hands", 1], ["Hit", 2], ["Power Requirement", 1], ["Finesse Requirement", 3], ["Special Stats", "None"]],
+			"Javelins": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "1-6"], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "Ranged attacks do not provoke attacks of opportunity"]],
+			"Composite Bow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "2-15"], ["Hands", 2], ["Hit", 1], ["Power Requirement", 4], ["Special Stats", "Force"]],
+			"Staff of Clout": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Range", "1"], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 5], ["Special Stats", "+1d4 to all Lore Master ability damage.  Weapon deals damage type of choice."]],
+			"Poleaxe": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", "1-2"], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "Force unless attacking at range 1"]],
+			"Throwing Stars": [["Piercing Damage", "1d4+0"], ["Piercing Critical Damage", "2d12+4"], ["Range", "2-4"], ["Hands", 1], ["Hit", 1], ["Finesse Requirement", 3], ["Special Stats", "+4 Obscure to conceal.  Surprise attack from hidden as if flanking."]],
+			"Spiked Shield": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "3d8+0"], ["Range", "1"], ["Hands", 1], ["Hit", 0], ["Special Stats", "Grants +1 AC and +1 ACrit per tier level"]],
+			"Bouche": [["DR", "1/Arcane"], ["AC", 1], ["ACrit", 2], ["Power Requirement", 4], ["Special Stats", "Can be used with Longspear"]],
+			"Crystal Barrier (Black)": [["DR", "6/Arcane"], ["AC", 0], ["Barrier", 15], ["ACrit", 2], ["Attunement Requirement", 5],["Special Stats", "Cannot be ignored with Barrier Bypass"]],
+			"Pet Tame": [["Charm Requirement", 2], ["Special Stats", "Check list."]],
+			"Pavise": [["DR", "1/Shock"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 5], ["Special Stats", "Can provide cover.  If used only for cover, reduce Power Req to 2, and you can weapon swap to a Crossbow while it is up."]],
+			"Crystal Barrier (Yellow)": [["DR", "4/Shock"], ["AC", 0], ["Barrier", 20], ["ACrit", 2], ["Attunement Requirement", 3],["Special Stats", "Cannot be ignored with Barrier Bypass"]],
+			"Tonfa Guard": [["DR", "1/Neutral"], ["AC", 3], ["ACrit", 6], ["Power Requirement", 2], ["Finesse Requirement", 4], ["Special Stats", "If an enemy attacks you and missing, gain a flanking bonus against them next turn"]],
+			"Mystic Robes": [["DR", "2/Fire"], ["Max Finesse", 7], ["AC", 4], ["ACrit", 9], ["Attunement Requirement", 4]],
+			"Hide Armor": [["DR", "3/Acid"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 9], ["Power Requirement", 2]],
+			"Layered Cape": [["DR", "2/Arcane"], ["Max Finesse", 12], ["AC", 2], ["ACrit", 6], ["Finesse Requirement", 4], ["Special Stats", "+2 to Obscure other items"]],
+			"Leafbraid": [["DR", "1/Frost"], ["Max Finesse", 9], ["AC", 3], ["ACrit", 7], ["Power Requirement", 1], ["Special Stats", "+2 Stealth around foliage"]],
+			"Sacred Tattoos": [["DR", "1/Neutral"], ["Max Finesse", 12], ["AC", 2], ["ACrit", 4], ["Attunement Requirement", 2], ["Special Stats", "Can only be equipped or unequipped overnight."]],
+			"Crystal Embedded Plate": [["DR", "4/Frost"], ["Max Finesse", 3], ["AC", 4], ["ACrit", 10], ["Power Requirement", 3], ["Attunement Requirement", 2], ["Special Stats", "You give off ambient light, and have -8 Stealth"]]
 			},
 			"progression":
 			{

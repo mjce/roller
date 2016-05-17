@@ -58,6 +58,7 @@ button:hover{
 }
 #stat{
   height: auto;
+  max-width: 500px;
 }
 .invisible {
   display: none;
@@ -86,6 +87,7 @@ button:hover{
   margin: auto;
   padding: 10px;
   min-height: 78px;
+  max-width: 500px;
 }
 .bold{
   font-weight: bold;

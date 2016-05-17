@@ -46,15 +46,13 @@
         <div id ="stat"></div>
         <div id = "seed">
           Seed (Optional):
-          <select id="seedItemList">
-            <option selected>store</option>
+          <select id="seedItemList" onchange="onChangeSeedList()">
+            <option selected>none</option>
+            <option>store</option>
+            <option>special</option>
           </select>
           <select id="seedItemType" onchange="onChangeSeedItemType()">
             <option selected>none</option>
-            <option>weapon</option>
-            <option>armor</option>
-            <option>offhand</option>
-            <option>accessory</option>
           </select>
           <select id="seedSubtype">
             <option selected>none</option>
