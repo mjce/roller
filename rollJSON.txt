@@ -120,7 +120,7 @@
 			},
 		"tier4":
 			{
-			"primary": "02d4",
+			"primary": "02d4+0",
 			"secondary": "01d2+0"
 			},
 		"tier5":
