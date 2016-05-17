@@ -17,7 +17,7 @@ Version Notes (1.2):
 
 // most of these global variables should be moved into the functions themselves.
 curState = 0;
-character = {class: "delver", tier: "tier6", kind:"none", equipment:"none", special: "", magic: "", stat: "", source: "store"};
+character = {class: "delver", tier: "tier6", kind:"none", equipment:"none", special: " ", magic: "", stat: "", source: "store"};
 output = "";
 itemType = "";
 count = 0;
@@ -32,6 +32,7 @@ function xmlRequests () {
   document.getElementById("class").disabled = false;
   document.getElementById("tier").disabled = false;
   document.getElementById("result").innerHTML = "Congratulations, adventurer! Roll your item!";
+  document.getElementById("seedItemList").selectedIndex = 0;
   curState = 0;
   var tableRequest = new XMLHttpRequest();
   var url = "rollJSON.txt";
@@ -57,14 +58,18 @@ function xmlRequests () {
           document.getElementById("seedItemType").selectedIndex = 0;
           onChangeSeedItemType();
           checkLocal();
-          document.getElementById("stat").innerHTML = localStorage["laststat"];
-          document.getElementById("result").innerHTML = localStorage["lastresult"];
+          //document.getElementById("stat").innerHTML = localStorage["laststat"];
+          //document.getElementById("result").innerHTML = localStorage["lastresult"];
           document.getElementById("logContent").innerHTML = localStorage["lastlog"];
           count = document.querySelectorAll("#logContent > button").length;
           setCount = setCheck();
           if (setCount > 0){
             document.getElementById("logMarkSet").className = "enabled";
             document.getElementById("logMarkSet").disabled = false;
+          }
+          if (document.getElementById("logContent").innerHTML == ""){
+            document.getElementById("logMarkSet").className = "disabled";
+            document.getElementById("logMarkSet").disabled = true;
           }
           var i = 1;
           while (i <= count){
@@ -99,9 +104,11 @@ function storeCheck(){
   //returns true 1/4 of the time
   check = roll4();
   if (check != 4){
-    return true;
+    character.special = " ";
+    return "store";
   } else {
-    return false;
+    character.special = " special ";
+    return "special";
   }
 }
 
@@ -174,9 +181,6 @@ function firstRoll(variable){
   document.getElementById("stat").innerHTML = "";
   if (curState == 0) {
     //clears the character object
-    character.special = "";
-    character.equipment = "";
-    character.stat = "";
     output = "";
     //get the tier level and class from the select elements in index.html
     var dropDown = document.getElementById("tier");
@@ -184,22 +188,26 @@ function firstRoll(variable){
     dropDown = document.getElementById("class");
     character.class = dropDown.options[dropDown.selectedIndex].id;
     //check if the item is a store item, set character.store to boolean
-    character.store = storeCheck();
+    character.kind = document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value;
+    character.source = document.getElementById("seedItemList").options[document.getElementById("seedItemList").selectedIndex].value;
+    character.equipment = document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value;
+    character.stat = "";
+
     //roll on a series of tables to determine item type, return string or object
-    if (document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value != "none"){
-      character.store = true;
-      if (document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value == "none"){
+    if (character.equipment != "none"){
+      curState = 2;
+      return firstRoll(document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value);
+    } else if (character.kind != "none"){
         curState = 1;
         return firstRoll(document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value);
+      } else if (character.source != "none"){
+        if (character.source = "special"){character.special = " special "} else {character.special = " "}
       } else {
-        curState = 2;
-        character.kind = document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value;
-        return firstRoll(document.getElementById("seedSubtype").options[document.getElementById("seedSubtype").selectedIndex].value);
+        character.source = storeCheck();
       }
-    }
     itemType = typeItem();
     if (typeof itemType == "object"){
-      output = "Choose your item type:";
+      output = "Choose your" + character.special + "item type:";
       // create button elements representing elements in the object, then pass
       // a selection from that object to this function as "variable"
       return createButtons(itemType);
@@ -212,18 +220,15 @@ function firstRoll(variable){
     // set character.kind to the item type
     character.kind = variable;
     // get a list from the store items corresponding to the item type
-    var tempEquip = storeList[variable];
+    var tempEquip;
+    if (character.source == "store"){
+      tempEquip = storeList[variable];
+    } else {
+      var tempEquip = specialList[variable];
+    }
     // if item is special, store type in character.equipment for later output
     // string, run this function with curState 2
-    if (!character.store) {
-      //later, this should instead set tempEquip to specialList(variable),
-      // and be split into a separate conditional
-      output = "You rolled a special item!";
-      character.special = character.kind[0].toUpperCase() + character.kind.slice(1);
-      curState = 2;
-      return firstRoll("Special");
-      // if there are multiple options, make buttons to select from them
-    } else if (typeof tempEquip == "object" && character.kind != "accessory"){
+  if ((tempEquip[0][1]) && character.kind != "accessory"){
       output = "Choose your " + character.kind + ":";
       // get a random choice from the database table
       return createButtons(returnRandomEntry(tempEquip));
@@ -243,15 +248,10 @@ function firstRoll(variable){
   } else if (curState == 3) {
     // set character.magic to enhancement
     character.magic = variable;
-    //should be removed when special items are added
-    if (character.equipment == "Special"){
-      character.stat = "No stats available for special items."
-    } else {
+    character.stat = getStats();
+    character.magicStats = getMagicStats(character.magic);
       // get the stats of an item from tables, then return as a string delimited
       // by line breaks
-      character.stat = getStats();
-    }
-    // minor tweaks to pretty up values, order suffixes and prefixes
     output = formatOutput();
     // output final values to divs
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
@@ -262,34 +262,49 @@ function firstRoll(variable){
     document.getElementById("logMarkSet").disabled = false;
     }
     document.getElementById("logContent").innerHTML += "<!--New Entry--> <br>" + "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
-    if ((character.kind != "accessory") && (character.store == true)) {
-      count += 1;
-      document.getElementById("logContent").innerHTML += "<br>";
-      var div = document.createElement("DIV");
-      var expButton = document.createElement("BUTTON");
-      var t2 = document.createTextNode("Show Stats");
-      var divName = "statDiv" + count;
-      div.id = divName;
-      div.className = "invisible";
-      div.innerHTML = character.stat;
-      expButton.id = divName + "button";
-      expButton.className = "expButton";
-      expButton.appendChild(t2);
-      document.getElementById("logContent").appendChild(expButton);
-      document.getElementById("logContent").appendChild(div);
-    }
+    count += 1;
+    document.getElementById("logContent").innerHTML += "<br>";
+    var div = document.createElement("DIV");
+    var expButton = document.createElement("BUTTON");
+    var t2 = document.createTextNode("Show Stats");
+    var divName = "statDiv" + count;
+    div.id = divName;
+    div.className = "invisible";
+    div.innerHTML = character.stat + "<br>" + character.magicStats;
+    expButton.id = divName + "button";
+    expButton.className = "expButton";
+    expButton.appendChild(t2);
+    document.getElementById("logContent").appendChild(expButton);
+    document.getElementById("logContent").appendChild(div);
     for (i=1;i<=count;i++){
         handleButton(i);
       }
-    document.getElementById("stat").innerHTML = character.stat;
+    document.getElementById("stat").innerHTML = character.stat + "<br>" + character.magicStats;
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     localStorage["laststat"] = document.getElementById("stat").innerHTML;
     localStorage["lastresult"] = document.getElementById("result").innerHTML;
     curState = 0;
-    document.getElementById("seedItemType").selectedIndex = 0;
-    document.getElementById("seedSubtype").selectedIndex = 0;
+    document.getElementById("seedItemList").selectedIndex = 0;
+    createSelect([], "seedItemType");
+    createSelect([], "seedSubtype");
   }
-
+function getMagicStats(magic){
+  var magicStats = "<b>Enhancement Bonuses:</b><br><br>";
+  var magicTable = masterTable["enhancements"][character.kind];
+  var adjustedTier = Number(character.tier.slice(4)-1);
+  if (character.kind != "accessory"){
+    for (enchantment in magic){
+      current = magic[enchantment];
+      magicStats += magicTable[current][0] + ": " + magicTable[current][1][adjustedTier] + "<br>";
+    }
+  } else {
+    magicStats += magic.toString().substring(2)+ ": " + magicTable[character.tier]["primary"] + "<br>All Other Stats: " + magicTable[character.tier]["secondary"];
+  }
+  magicStats = parseDice(magicStats);
+  magicStats = parseFlip(magicStats);
+  //magicStats = parseBase(magicStats);
+  return magicStats;
+}
 }
 function logMarkSet(){
   setCount += 1;
@@ -347,7 +362,7 @@ function formatOutput(){
       prefixes = character.magic;
   }
 }
-  output += prefixes + " " + character.equipment + " " + character.special + " " + suffixes;
+  output += prefixes + " " + character.equipment + " " + suffixes;
   return output;
 }
 function createButtons (list){
@@ -415,6 +430,9 @@ function roll6(){
 function roll10(){
   return Math.floor(Math.random()*10)+1;
 }
+function roll5(){
+  return Math.floor(Math.random()*5)+1;
+}
 function roll20(list){
   return Math.floor(Math.random()*20)+1;
 }
@@ -449,7 +467,7 @@ function magicFinder (category){
       // if a shield and "Energized"
       curState = 3;
       var offhandMaj = returnRandomEntry(magicObj["offhand"]);
-      if((character.equipment.indexOf("Shield")>0) || (character.equipment == "Buckler")){
+      if((character.equipment.indexOf("Shield")>0) || (character.equipment == "Buckler") || (character.equipment.indexOf("Tonfa")>0) ||(character.equipment.indexOf("Bouche") > 0) ){
         // shields can't be "Energized", so this code changes that enhancement to "Hardy"
         if (offhandMaj == "Energized"){
           offhandMaj = "Hardy";
@@ -475,36 +493,56 @@ function magicFinder (category){
     // this could probably be handled with a database, but it's awkward
     // chooses randomly from lists depending on tier level
     curState = 3;
+    var enchantList = [];
+    var cTest = "";
     if (tier <= 5){
       var roll = roll10();
       if (roll == 10){
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["C"])[1]]);
+        cTest = returnRandomEntry(magicObj["weapon"]["C"])[1];
       } else {
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1]]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["B"])[1]);
       }
     } else if (tier == 6){
-      return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1]]);
+      enchantList.push(returnRandomEntry(magicObj["weapon"]["B"])[1]);
+      cTest = returnRandomEntry(magicObj["weapon"]["C"])[1];
     } else if (tier == 7){
       var roll = roll100();
       if (roll <= 90){
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1]]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["B"])[1]);
+        cTest = returnRandomEntry(magicObj["weapon"]["C"])[1];
       } else if (roll <= 96) {
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["S"])[1]]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["B"])[1]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["S"])[1]);
       } else {
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["C"])[1], returnRandomEntry(magicObj["weapon"]["S"])[1]]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["S"])[1]);
+        cTest = returnRandomEntry(magicObj["weapon"]["C"])[1];
       }
     } else if (tier == 8){
       var roll = roll100();
       if (roll <= 80){
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1]]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["B"])[1]);
+        cTest = returnRandomEntry(magicObj["weapon"]["C"])[1];
       } else if (roll <= 90){
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["S"])[1]]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["B"])[1]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["S"])[1]);
       } else {
-        return firstRoll([returnRandomEntry(magicObj["weapon"]["C"])[1], returnRandomEntry(magicObj["weapon"]["S"])[1]]);
+        enchantList.push(returnRandomEntry(magicObj["weapon"]["S"])[1]);
+        cTest = returnRandomEntry(magicObj["weapon"]["C"])[1];
       }
     } else {
-      return firstRoll([returnRandomEntry(magicObj["weapon"]["B"])[1], returnRandomEntry(magicObj["weapon"]["C"])[1], returnRandomEntry(magicObj["weapon"]["S"])[1]]);
+      enchantList.push(returnRandomEntry(magicObj["weapon"]["B"])[1]);
+      enchantList.push(returnRandomEntry(magicObj["weapon"]["S"])[1]);
+      cTest = returnRandomEntry(magicObj["weapon"]["C"])[1];
     }
+    if ((character.equipment.indexOf("bow") != -1) || (character.equipment.indexOf("Star")) != -1){
+      if (cTest == "Extending"){
+        cTest = weaponLoop(cTest);
+      }
+    } else if ((cTest == "Powerful" && (character.equipment.indexOf("Javelins") == -1) && (character.equipment.indexOf("Axes") == -1))||(cTest == "Extending" && (Number(character.tier.substring(4))<4))){
+      cTest = weaponLoop(cTest);
+      }
+    if(cTest){enchantList.push(cTest);}
+    return firstRoll(enchantList);
   }
 }
 function armorLoop(previous){
@@ -520,7 +558,28 @@ function armorLoop(previous){
     }
   }
 }
-
+function weaponLoop(previous){
+  // rolls weapon enhancements and checks for duplicates
+  var roll = roll5();
+  for (x in (magicObj["weapon"]["C"])){
+    if (roll <= magicObj["weapon"]["C"][x][0]){
+      if (magicObj["weapon"]["C"][x][1] == previous){
+        return weaponLoop(previous);
+      } else {
+        return magicObj["weapon"]["C"][x][1];
+      }
+    }
+  }
+}
+function onChangeSeedList(){
+  character.source = document.getElementById("seedItemList").options[document.getElementById("seedItemList").selectedIndex].value;
+  if (character.source != "none"){
+    createSelect([["weapon"], ["armor"], ["offhand"], ["accessory"]], "seedItemType");
+  } else {
+    createSelect([], "seedItemType")
+  }
+  return createSelect([], "seedSubtype");
+}
 function onChangeSeedItemType(){
   var typeSelect = document.getElementById("seedItemType");
   character.kind = typeSelect.options[typeSelect.selectedIndex].value;
@@ -534,6 +593,7 @@ function onChangeSeedItemType(){
 
 function createSelect(list, id){
   //looks through table for members of item type, and outputs all non-duplicates as alphabetized options in a select element
+  document.getElementById(id).innerHTML = "";
   var tempList = [];
   for (member in list) {
     for (entry in list[member]){
@@ -606,10 +666,86 @@ function getStats(){
     }
     // puts each stat on a different line
     statString += baseStats[stat][0] + ": " + newStat + postString + dmgNum + "<br />";
+    statString = parseTier(statString);
+    statString = parseAlternateTier(statString);
   }
   return(statString);
 }
-
+function parseFlip(string){
+  var pattern = new RegExp("[0-9]{1,2}cf[0-9]{1,2}");
+  var result = pattern.exec(string);
+  while (result){
+    result = result.toString();
+    var cf = result.indexOf("cf");
+    var add = Number(result.substring(0, cf));
+    var flip = Number(result.substring(cf+1));
+    add += Math.floor(Math.random())*flip;
+    var number = add.toString();
+    string = string.replace(result, number);
+    result = pattern.exec(string);
+  }
+  return string;
+}
+function parseBase(string){
+  var pattern = new RegExp("[0-9]{1,2}b");
+  var result = pattern.exec(string);
+  while (result){
+  }
+}
+function parseDice(string){
+  var pattern = new RegExp("[0-9]{1,2}d[0-9]{1,2}\\+[0-9]{1,2}");
+  var result = pattern.exec(string);
+  while (result != null){
+    result = result.toString();
+    var d = result.indexOf("d");
+    var plus = result.indexOf("+");
+    var dieNum = Number(result.substring(0, d));
+    var die = Number(result.substring(d+1, plus));
+    var add = Number(result.substring(plus+1));
+    for(i = 0; i<dieNum;i++){
+      add += Math.floor(Math.random()*die)+1;
+    }
+    var number = add.toString();
+    string = string.replace(result, number);
+    result = pattern.exec(string);
+  }
+return string;
+}
+function parseTier(string){
+  var pattern = new RegExp("[0-9]{1,2}\\.?[0-9]{0,2}t\\+[0-9]{1,2}");
+  var result = pattern.exec(string);
+  while(result != null){
+    result = result.toString();
+    var t = result.indexOf("t");
+    var multiplier = Number(result.substring(0, t));
+    var add = Number(result.substring(t+2));
+    add += Math.floor(multiplier*Number(character.tier.substring(4)));
+    string = string.replace(result, add);
+    result = pattern.exec(string);
+  }
+return string;
+}
+function parseAlternateTier(string){
+  var pattern = new RegExp("t[1-9]:[A-Za-z0-9]+\\/");
+  var result = pattern.exec(string);
+  var highestTier = 0;
+  var lastFind = "";
+  while(result != null){
+    result = result.toString();
+    var colon = result.indexOf(":");
+    var tier = Number(result.substring(1, colon));
+    var slash = result.indexOf("/");
+    var resultant = result.substring(colon+1, slash)
+    string = string.replace(result, resultant);
+    if (tier > highestTier && tier <= Number(character.tier.substring(4))){
+      highestTier = tier;
+      string = string.replace(lastFind, "");
+      lastFind = resultant;
+  }
+    result = pattern.exec(string);
+  }
+return string;
+}
 function coinflip(){
   // returns 0 or 1 with a 50-50 chance
   return Math.round(Math.random());
