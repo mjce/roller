@@ -107,7 +107,7 @@ function storeCheck(){
     character.special = " ";
     return "store";
   } else {
-    character.special = " special ";
+    character.special = " <b>special</b> ";
     return "special";
   }
 }
@@ -201,7 +201,7 @@ function firstRoll(variable){
         curState = 1;
         return firstRoll(document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value);
       } else if (character.source != "none"){
-        if (character.source = "special"){character.special = " special "} else {character.special = " "}
+        if (character.source = "special"){character.special = " <b>special</b> "} else {character.special = " "}
       } else {
         character.source = storeCheck();
       }
@@ -229,7 +229,7 @@ function firstRoll(variable){
     // if item is special, store type in character.equipment for later output
     // string, run this function with curState 2
   if ((tempEquip[0][1]) && character.kind != "accessory"){
-      output = "Choose your " + character.kind + ":";
+      output = "Choose your " + character.special + character.kind + ":";
       // get a random choice from the database table
       return createButtons(returnRandomEntry(tempEquip));
     } else {
@@ -302,6 +302,7 @@ function getMagicStats(magic){
   }
   magicStats = parseDice(magicStats);
   magicStats = parseFlip(magicStats);
+  magicStats = parseBase(character.stat, magicStats);
   //magicStats = parseBase(magicStats);
   return magicStats;
 }
@@ -587,7 +588,7 @@ function onChangeSeedItemType(){
   if (character.kind != "accessory"){
     return createSelect(masterTable[character.source][character.kind], "seedSubtype");
   } else {
-    return createSelect([], "seedSubtype");
+    return createSelect([masterTable[character.source][character.kind]], "seedSubtype");
   }
 }
 
@@ -647,7 +648,7 @@ function getStats(){
     dmgNum = Number(baseStats[stat][1].substring(baseStats[stat][1].indexOf("+")+1, baseStats[stat][1].length));
   }
   // filters stats without progression - might be better handled with a database
-  else if ((baseStats[stat][0] == "Range")||(baseStats[stat][0] == "Value")||(baseStats[stat][0] == "Special Stats")||(baseStats[stat][0] == "Hands")){
+  else if ((baseStats[stat][0] == "Range")||(baseStats[stat][0] == "Flavor")||(baseStats[stat][0] == "Special Stats")||(baseStats[stat][0] == "Hands")){
     noProg = true;
     newStat = baseStats[stat][1];
   }
@@ -665,7 +666,11 @@ function getStats(){
       }
     }
     // puts each stat on a different line
-    statString += baseStats[stat][0] + ": " + newStat + postString + dmgNum + "<br />";
+    if (baseStats[stat][0] == "Flavor"){
+      statString += newStat + postString + dmgNum + "<br />";
+    } else {
+      statString += baseStats[stat][0] + ": " + newStat + postString + dmgNum + "<br />";
+    }
     statString = parseTier(statString);
     statString = parseAlternateTier(statString);
   }
@@ -674,22 +679,49 @@ function getStats(){
 function parseFlip(string){
   var pattern = new RegExp("[0-9]{1,2}cf[0-9]{1,2}");
   var result = pattern.exec(string);
-  while (result){
+  while (result != null){
     result = result.toString();
     var cf = result.indexOf("cf");
     var add = Number(result.substring(0, cf));
-    var flip = Number(result.substring(cf+1));
-    add += Math.floor(Math.random())*flip;
+    var flip = Number(result.substring(cf+2));
+    add += Math.round(Math.random())*flip;
     var number = add.toString();
     string = string.replace(result, number);
     result = pattern.exec(string);
   }
   return string;
 }
-function parseBase(string){
-  var pattern = new RegExp("[0-9]{1,2}b");
-  var result = pattern.exec(string);
-  while (result){
+function parseBase(string, bonusString){
+  var crit = string.indexOf("Critical Damage:");
+  if(crit == -1){
+    return bonusString;
+  } else {
+    newString = string.substring(crit);
+    var dicePattern = new RegExp("[0-9]{1,2}d[0-9]{1,2}");
+    result = dicePattern.exec(newString).toString();
+    var dice = result.substring(result.indexOf("d"));
+
+    var pattern = new RegExp("[0-9]{1,2}b\\+[0-9]{1,2}");
+    result = pattern.exec(bonusString);
+    while (result != null){
+      result = result.toString();
+      var oldResult = result.slice(0);
+      result = result.replace("b", dice);
+      bonusString = bonusString.replace(oldResult, result);
+      result = pattern.exec(bonusString);
+    }
+    dicePattern = new RegExp("[0-9]?0d[0-9]{1,2}");
+    result = dicePattern.exec(bonusString);
+    while (result != null){
+      result = result.toString();
+      if (result[0] == "0"){
+        bonusString = bonusString.replace(result, "");
+        result = pattern.exec(bonusString);
+      } else {
+        result = null;
+      }
+    }
+    return bonusString;
   }
 }
 function parseDice(string){
@@ -730,6 +762,7 @@ function parseAlternateTier(string){
   var result = pattern.exec(string);
   var highestTier = 0;
   var lastFind = "";
+  var itemTier = Number(character.tier.substring(4));
   while(result != null){
     result = result.toString();
     var colon = result.indexOf(":");
@@ -737,10 +770,12 @@ function parseAlternateTier(string){
     var slash = result.indexOf("/");
     var resultant = result.substring(colon+1, slash)
     string = string.replace(result, resultant);
-    if (tier > highestTier && tier <= Number(character.tier.substring(4))){
+    if (tier > highestTier && tier <= itemTier){
       highestTier = tier;
       string = string.replace(lastFind, "");
       lastFind = resultant;
+  } else if (tier > itemTier){
+    string = string.replace(resultant, "");
   }
     result = pattern.exec(string);
   }

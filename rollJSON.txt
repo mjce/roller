@@ -116,12 +116,12 @@
 		"tier3":
 			{
 			"primary": "01d6+1",
-			"secondary": "01d2"
+			"secondary": "01d2+0"
 			},
 		"tier4":
 			{
 			"primary": "02d4",
-			"secondary": "01d2"
+			"secondary": "01d2+0"
 			},
 		"tier5":
 			{
@@ -152,33 +152,33 @@
 	"weapon":
 		{
 		"Sharp":
-			["Attack", ["01d3+0", "01d4+0", "01d6+0", "01d6+1", "02d4+0", "02d6+0", "02d6+2", "03d6+2", "03d6+5"]],
+			["Attack", ["+01d3+0", "+01d4+0", "+01d6+0", "+01d6+1", "+02d4+0", "+02d6+0", "+02d6+2", "+03d6+2", "+03d6+5"]],
 		"Lethal":
-			["Damage", ["01d3+0", "01d4+0", "01d6+0", "01d6+1", "02d4+0", "02d6+0", "02d6+2", "03d6+2", "03d6+5"]],
+			["Damage", ["+01d3+0", "+01d4+0", "+01d6+0", "+01d6+1", "+02d4+0", "+02d6+0", "+02d6+2", "+03d6+2", "+03d6+5"]],
 		"Erratic":
-			["Critical Damage", ["0b+4", "1b+4", "1b+9", "2b+9", "2b+15", "3b+15", "3b+21", "4b+21", "3b+28"]],
+			["Critical Damage", ["+0b+4", "+1b+4", "+1b+9", "+2b+9", "+2b+15", "+3b+15", "+3b+21", "+4b+21", "+3b+28"]],
 		"Flaming":
-			["Fire Damage", ["0d2+1", "0d2+2", "0d2+3", "0d2+4", "0d2+5", "0d2+7", "0d2+9", "0d2+12", "0d2+15"]],
+			["Fire Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
 		"Electric":
-			["Shock Damage", ["0d2+1", "0d2+2", "0d2+3", "0d2+4", "0d2+5", "0d2+7", "0d2+9", "0d2+12", "0d2+15"]],
+			["Shock Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
 		"Frost":
-			["Frost Damage", ["0d2+1", "0d2+2", "0d2+3", "0d2+4", "0d2+5", "0d2+7", "0d2+9", "0d2+12", "0d2+15"]],
+			["Frost Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
 		"Corrosive":
-			["Corrosive Damage", ["0d2+1", "0d2+2", "0d2+3", "0d2+4", "0d2+5", "0d2+7", "0d2+9", "0d2+12", "0d2+15"]],
+			["Corrosive Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
 		"Arcane":
-			["Arcane Damage", ["0d2+1", "0d2+2", "0d2+3", "0d2+4", "0d2+5", "0d2+7", "0d2+9", "0d2+12", "0d2+15"]],
+			["Arcane Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
 		"Bloody":
-			["Damage Over Time", ["10% Duration 0d2+1", "10% Duration 01d2+0", "10% Duration 01d4+0", "10% Duration 01d6+0", "25% Duration 01d3+0", "25% Duration 01d4+0", "25% Duration 01d6+0", "25% Duration 01d8+0", "25% Duration 01d6+3"]],
+			["Damage Over Time", ["10%, Duration 0d2+1", "10%, Duration 01d2+0", "10%, Duration 01d4+0", "10%, Duration 01d6+0", "25%, Duration 01d3+0", "25%, Duration 01d4+0", "25%, Duration 01d6+0", "25%, Duration 01d8+0", "25%, Duration 01d6+3"]],
 		"Piercing":
-			["Bypass Barrier DR", ["0d2+5", "0d2+7", "0d2+10", "0d2+14", "0d2+19", "0d2+26", "0d2+33", "0d2+41", "0d2+50"]],
+			["Bypass Barrier DR", ["+0d2+5", "+0d2+7", "+0d2+10", "+0d2+14", "+0d2+19", "+0d2+26", "+0d2+33", "+0d2+41", "+0d2+50"]],
 		"Opportunistic":
-			["Extra Attacks of Opportunity", ["0d2+1", "0d2+1", "0d2+1", "01d2+0", "01d2+0", "01d2+0", "01d3+0", "01d3+0", "01d2+1"]],
+			["Extra Attacks of Opportunity", ["+0d2+1 AoO", "+0d2+1 AoO", "+0d2+1 AoO", "+01d2+0 AoO", "+01d2+0 AoO", "+01d2+0 AoO", "+01d3+0 AoO", "+01d3+0 AoO", "+01d2+1 AoO"]],
 		"Agile":
-			["Movement", ["0d2+1", "01d2+0", "0d2+2", "0d2+2", "01d2+1", "0d2+3", "01d2+2", "0d2+4", "01d2+3"]],
+			["Movement (Cells)", ["+0d2+1", "+01d2+0", "+0d2+2", "+0d2+2", "+01d2+1", "+0d2+3", "+01d2+2", "+0d2+4", "+01d2+3"]],
 		"Extending":
-			["Increased Melee Range", ["0d2+0", "0d2+0", "0d2+0", "0d2+1", "0d2+1", "0d2+1", "0d2+1", "0d2+2", "0d2+2"]],
+			["Melee Range", ["0", "0", "0", "+0d2+1", "+0d2+1", "+0d2+1", "+0d2+1", "+0d2+2", "+0d2+2"]],
 		"Powerful":
-			["Increased Ranged Range", ["0d2+1", "0d2+1", "0d2+2", "0d2+2", "0d2+3", "0d2+3", "0d2+4", "0d2+4", "0d2+5"]],
+			["Ranged Range", ["+0d2+1", "+0d2+1", "+0d2+2", "+0d2+2", "+0d2+3", "+0d2+3", "+0d2+4", "+0d2+4", "+0d2+5"]],
 		"Spry":
 			["Extra Actions", ["1 Swift", "1 Swift", "3/4 Swift, 1/4 Move", "1/4 Swift, 3/4 Move", "1 Move", "3/4 Move, 1/4 Standard", "1/4 Move, 3/4 Standard", "1 Standard", "1/2 Standard, 1/2 Full"]],
 		"S-Class":
@@ -187,50 +187,50 @@
 	"armor":
 		{
 		"Retardant":
-			["DR Fire", ["01d6+0", "01d6+1", "02d4+0", "02d6+0", "02d6+2", "03d6+2", "03d6+5", "04d6+4", "04d6+8"]],
+			["DR", ["+01d6+0 vs. Fire", "+01d6+1 vs. Fire", "+02d4+0 vs. Fire", "+02d6+0 vs. Fire", "+02d6+2 vs. Fire", "+03d6+2 vs. Fire", "+03d6+5 vs. Fire", "+04d6+4 vs. Fire", "+04d6+8 vs. Fire"]],
 		"Negating":
-			["DR Arcane", ["01d6+0", "01d6+1", "02d4+0", "02d6+0", "02d6+2", "03d6+2", "03d6+5", "04d6+4", "04d6+8"]],
+			["DR", ["+01d6+0 vs. Arcane", "+01d6+1 vs. Arcane", "+02d4+0 vs. Arcane", "+02d6+0 vs. Arcane", "+02d6+2 vs. Arcane", "+03d6+2 vs. Arcane", "+03d6+5 vs. Arcane", "+04d6+4 vs. Arcane", "+04d6+8 vs. Arcane"]],
 		"Neutralizing":
-			["DR Acid", ["01d6+0", "01d6+1", "02d4+0", "02d6+0", "02d6+2", "03d6+2", "03d6+5", "04d6+4", "04d6+8"]],
+			["DR", ["+01d6+0 vs. Acid", "+01d6+1 vs. Acid", "+02d4+0 vs. Acid", "+02d6+0 vs. Acid", "+02d6+2 vs. Acid", "+03d6+2 vs. Acid", "+03d6+5 vs. Acid", "+04d6+4 vs. Acid", "+04d6+8 vs. Acid"]],
 		"Tepid":
-			["DR Frost", ["01d6+0", "01d6+1", "02d4+0", "02d6+0", "02d6+2", "03d6+2", "03d6+5", "04d6+4", "04d6+8"]],
+			["DR", ["+01d6+0 vs. Frost", "+01d6+1 vs. Frost", "+02d4+0 vs. Frost", "+02d6+0 vs. Frost", "+02d6+2 vs. Frost", "+03d6+2 vs. Frost", "+03d6+5 vs. Frost", "+04d6+4 vs. Frost", "+04d6+8 vs. Frost"]],
 		"Grounded":
-			["DR Shock", ["01d6+0", "01d6+1", "02d4+0", "02d6+0", "02d6+2", "03d6+2", "03d6+5", "04d6+4", "04d6+8"]],
+			["DR", ["+01d6+0 vs. Shock", "+01d6+1 vs. Shock", "+02d4+0 vs. Shock", "+02d6+0 vs. Shock", "+02d6+2 vs. Shock", "+03d6+2 vs. Shock", "+03d6+5 vs. Shock", "+04d6+4 vs. Shock", "+04d6+8 vs. Shock"]],
 		"Fortified":
-			["ACrit", ["3", "4", "5", "6", "8", "10", "12", "14", "16"]],
+			["ACrit", ["+3", "+4", "+5", "+6", "+8", "+10", "+12", "+14", "+16"]],
 		"Reinforced":
-			["AC", ["1", "2", "3", "4", "5", "6", "7", "8", "9"]],
+			["AC", ["+1", "+2", "+3", "+4", "+5", "+6", "+7", "+8", "+9"]],
 		"Mobile":
-			["Movement", ["0d2+1", "0d2+1", "01d2+0", "01d3+0", "01d3+0", "01d4+0", "01d4+1", "01d4+2", "01d4+2"]],
+			["Movement", ["+0d2+1", "+0d2+1", "+01d2+0", "+01d3+0", "+ 01d3+0", "+01d4+0", "+01d4+1", "+01d4+2", "+01d4+2"]],
 		"Resistant":
-			["Saves", ["0d2+1", "0d2+1", "01d2+0", "01d3+0", "01d3+0", "01d4+0", "01d4+1", "01d4+2", "01d4+2"]],
+			["Saves", ["+0d2+1", "+0d2+1", "+01d2+0", "+01d3+0", "+01d3+0", "+01d4+0", "+01d4+1", "+01d4+2", "+01d4+2"]],
 		"Intense":
-			["Resource", ["01d6+0", "02d4+0", "02d6+0", "03d4+0", "03d6+0", "03d8+0", "04d8+0", "06d6+0", "08d6+0"]],
+			["Resource", ["+01d6+0", "+02d4+0", "+02d6+0", "+03d4+0", "+03d6+0", "+03d8+0", "+04d8+0", "+06d6+0", "+08d6+0"]],
 		"Quenched":
-			["Potion Use", ["0d2+1", "0d2+1", "0d2+1", "01d2+0", "01d2+0", "01d2+0", "0d2+2", "0d2+2", "0d2+2"]],
+			["Potion Use", ["+0d2+1 /day", "+0d2+1 /day", "+0d2+1 /day", "+01d2+0 /day", "+01d2+0 /day", "+ 01d2+0 /day", "+0d2+2 /day", "+0d2+2 /day", "+0d2+2 /day"]],
 		"Homebound":
-			["Faster Warp", ["0d2+2", "0d2+2", "0d2+2", "01d2+0", "01d2+0", "01d2+0", "0d2+1", "0d2+1", "0d2+1"]],
+			["Faster Warp", ["0d2+2 Rounds", "0d2+2 Rounds", "0d2+2 Rounds", "01d2+0 Round(s)", "01d2+0 Round(s)", "01d2+0 Round(s)", "0d2+1 Round", "0d2+1 Round", "0d2+1 Round"]],
 		"of Ease":
-			["Reduced Requirements", ["0d2+1", "01d2+0", "01d2+0", "0d2+2", "01d2+1", "01d2+1", "0d2+3", "01d2+2", "01d2+2"]]
+			["Reduced Requirements", ["-0d2+1 To All Requirements", "-01d2+0 To All Requirements", "-01d2+0 To All Requirements", "-0d2+2 To All Requirements", "-01d2+1 To All Requirements", "-01d2+1 To All Requirements", "-0d2+3 To All Requirements", "-01d2+2 To All Requirements", "-01d2+2 To All Requirements"]]
 		},
 	"offhand":
 	{
 	"Energized":
-		["Barrier % Increase", ["10", "15", "20", "25", "30", "35", "40", "45", "50"]],
+		["Barrier Increase", ["10%", "15%", "20%", "25%", "30%", "35%", "40%", "45%", "50%"]],
 	"Hardy":
-		["HP", ["02d4+0", "02d6+0", "03d4+0", "03d6+0", "03d8+0", "04d8+0", "06d6+0", "08d6+0", "10d6+0"]],
+		["HP", ["+02d4+0", "+02d6+0", "+03d4+0", "+03d6+0", "+03d8+0", "+04d8+0", "+06d6+0", "+08d6+0", "+10d6+0"]],
 	"Vampiric":
 		["Life Leech", ["0d2+1", "01d2+0", "0d2+2", "01d2+2", "0d2+3", "01d2+2", "0d2+4", "01d2+3", "0d2+5"]],
 	"Evasive":
-			["Dodge chance", ["10", "10", "10cf5", "15", "15", "15cf5", "20", "20", "20cf5"]],
+			["Dodge chance", ["10%", "10%", "10cf5%", "15%", "15%", "15cf5%", "20%", "20%", "20cf5%"]],
 	"Holy":
-			["Improved Healing", ["01d6+0", "01d6+0", "01d6+0", "01d6+0", "02d6+0", "02d6+0", "02d6+0", "02d6+0", "03d6+0"]],
+			["Improved Healing", ["+01d6+0", "+01d6+0", "+01d6+0", "+01d6+0", "+02d6+0", "+02d6+0", "+02d6+0", "+02d6+0", "+03d6+0"]],
 	"Thorned":
 			["Thorn Damage", ["1", "2", "3", "4", "5", "7", "9", "11", "13"]],
 	"Harrying":
 			["Spell Thorn Damage", ["2", "3", "4", "6", "8", "10", "13", "16", "20"]],
 	"Acute":
-			["Resource", ["01d3+0", "01d4+0", "01d6+0", "01d6+1", "01d8+1", "02d6+0", "02d8+0", "03d6+0", "04d6+0"]]
+			["Resource", ["+01d3+0", "+01d4+0", "+01d6+0", "+01d6+1", "+01d8+1", "+02d6+0", "+02d8+0", "+03d6+0", "+04d6+0"]]
 	}
 	},
 "magic":
@@ -389,13 +389,14 @@
 		{
 		"base":
 			{
-			"Cape": [["Special Stats", "Makes you look mysterious."]],
-			"Gloves": [["Special Stats", "You only need to wear one, but people will look at you funny if you do."]],
-			"Necklace": [["Special Stats", "The dollar signs are just for decoration."]],
-			"Ring": [["Special Stats", "Someone out there likes you."]],
-			"Bracers": [["Special Stats", "Makes your forearms bulge with menace."]],
-			"Cloak": [["Special Stats", "Complete with dozens of hidden pockets."]],
-			"Headband": [["Special Stats", "Don't sweat it."]],
+			"Amulet": [["Flavor", "Thanks for participating."]],
+			"Cape": [["Flavor", "Makes you look mysterious."]],
+			"Gloves": [["Flavor", "Gloving you is easy 'cause you're beautiful..."]],
+			"Necklace": [["Flavor", "The dollar signs are just for decoration."]],
+			"Ring": [["Flavor", "Someone out there likes you."]],
+			"Bracers": [["Flavor", "Makes your forearms bulge with menace."]],
+			"Cloak": [["Flavor", "Complete with dozens of hidden pockets."]],
+			"Headband": [["Flavor", "Don't sweat it."]],
 			"Rope Bracer": [["Special Stats", "Magically stores (10t+20) feet of rope which can untie itself and return at will. 1t+0 Use Rope.  If the rope is cut it disappears in 1t+0 rounds and cannot be summoned again until the next day."]],
 			"Quick Boots": [["Special Stats", "Gain +0.25t+1 Movement and +1t+0 Acrobatics."]],
 			"Scholar's Glasses": [["Special Stats", "Gain +0.5t+1 to all knowledge checks and +0.34t+1 Charm."]],
@@ -429,12 +430,12 @@
 			"Greatsword": [["Slashing Damage", "2d6+0"],["Slashing Critical Damage", "3d6+0"], ["Range", "1-2"], ["Hands", 2], ["Hit", 0], ["Power Requirement", 4], ["Special Stats", "Force"]],
 			"Longsword": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "None"]],
 			"Thinblade": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+2"], ["Range", 1], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "None"]],
-			"Brigandine": [["DR", "2/Acid"], ["Max Finesse", 5], ["AC", 4], ["ACrit", 9], ["Power Requirement", 3],["Value", "Unknown"]],
-			"Leather Jerkin": [["Max Finesse", 12], ["AC", 1], ["ACrit", 4], ["Power Requirement", 1],["Value", "Unknown"]],
-			"Half Plate": [["DR", "3/Shock"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 10], ["Power Requirement", 3],["Value", "Unknown"]],
-			"Padded Jack": [["DR", "1/Fire"], ["Max Finesse", 9], ["AC", 2], ["ACrit", 6], ["Power Requirement", 1],["Value", "Unknown"]],
-			"Mail": [["DR", "2/Frost"], ["Max Finesse", 7], ["AC", 3], ["ACrit", 7], ["Power Requirement", 2],["Value", "Unknown"]],
-			"Full Plate": [["DR", "3/Shock"], ["Max Finesse", 3], ["AC", 5], ["ACrit", 12], ["Power Requirement", 4],["Value", "Unknown"]],
+			"Brigandine": [["DR", "2/Acid"], ["Max Finesse", 5], ["AC", 4], ["ACrit", 9], ["Power Requirement", 3]],
+			"Leather Jerkin": [["Max Finesse", 12], ["AC", 1], ["ACrit", 4], ["Power Requirement", 1]],
+			"Half Plate": [["DR", "3/Shock"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 10], ["Power Requirement", 3]],
+			"Padded Jack": [["DR", "1/Fire"], ["Max Finesse", 9], ["AC", 2], ["ACrit", 6], ["Power Requirement", 1]],
+			"Mail": [["DR", "2/Frost"], ["Max Finesse", 7], ["AC", 3], ["ACrit", 7], ["Power Requirement", 2]],
+			"Full Plate": [["DR", "3/Shock"], ["Max Finesse", 3], ["AC", 5], ["ACrit", 12], ["Power Requirement", 4]],
 			"Repeating Crossbow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "1-8"], ["Hands", 2], ["Hit", 2], ["Power Requirement", 2], ["Special Stats", "Six shots without reload. Move action to reload."]],
 			"Throwing Axes": [["Slashing Damage", "2d4+0"], ["Slashing Critical Damage", "3d4+0"], ["Range", "1-4"], ["Hands", 1], ["Hit", 0], ["Power Requirement", 2], ["Special Stats", "Force"]],
 			"Punching Daggers": [["Piercing Damage", "1d4+0"], ["Piercing Critical Damage", "2d12+4"], ["Range", "1"], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "+4 Obscure to conceal.  Surprise attack from hidden as if flanking."]],
@@ -452,8 +453,8 @@
 			"Pavise": [["DR", "1/Shock"], ["AC", 2], ["ACrit", 4], ["Power Requirement", 5], ["Special Stats", "Can provide cover.  If used only for cover, reduce Power Req to 2, and you can weapon swap to a Crossbow while it is up."]],
 			"Crystal Barrier (Yellow)": [["DR", "4/Shock"], ["AC", 0], ["Barrier", 20], ["ACrit", 2], ["Attunement Requirement", 3],["Special Stats", "Cannot be ignored with Barrier Bypass"]],
 			"Tonfa Guard": [["DR", "1/Neutral"], ["AC", 3], ["ACrit", 6], ["Power Requirement", 2], ["Finesse Requirement", 4], ["Special Stats", "If an enemy attacks you and missing, gain a flanking bonus against them next turn"]],
-			"Mystic Robes": [["DR", "2/Fire"], ["Max Finesse", 7], ["AC", 4], ["ACrit", 9], ["Attunement Requirement", 4],["Value", "Base 10"]],
-			"Hide Armor": [["DR", "3/Acid"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 9], ["Power Requirement", 2],["Value", "Base 10"]],
+			"Mystic Robes": [["DR", "2/Fire"], ["Max Finesse", 7], ["AC", 4], ["ACrit", 9], ["Attunement Requirement", 4]],
+			"Hide Armor": [["DR", "3/Acid"], ["Max Finesse", 4], ["AC", 4], ["ACrit", 9], ["Power Requirement", 2]],
 			"Layered Cape": [["DR", "2/Arcane"], ["Max Finesse", 12], ["AC", 2], ["ACrit", 6], ["Finesse Requirement", 4], ["Special Stats", "+2 to Obscure other items"]],
 			"Leafbraid": [["DR", "1/Frost"], ["Max Finesse", 9], ["AC", 3], ["ACrit", 7], ["Power Requirement", 1], ["Special Stats", "+2 Stealth around foliage"]],
 			"Sacred Tattoos": [["DR", "1/Neutral"], ["Max Finesse", 12], ["AC", 2], ["ACrit", 4], ["Attunement Requirement", 2], ["Special Stats", "Can only be equipped or unequipped overnight."]],
