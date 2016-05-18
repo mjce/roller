@@ -401,7 +401,7 @@
 			"Quick Boots": [["Special Stats", "Gain +0.25t+1 Movement and +1t+0 Acrobatics."]],
 			"Scholar's Glasses": [["Special Stats", "Gain +0.5t+1 to all knowledge checks and +0.34t+1 Charm."]],
 			"Ring of Vitality": [["Special Stats", "When unconscious gain 2 DR and fast healing 1."]],
-			"Hooked Gloves": [["Special Stats", "Gain +4 versus disarm and +0.5t+1 to Climb checks.   Unarmed Strikes now deal 1d6/2d6 lethal and do not provoke AoOs. +8 To Obscure checks to conceal this item. Surprise attack grants flanking for 1 attack."]],
+			"Hooked Gloves": [["Slashing Damage", "1d6+0"], ["Slashing Critical Damage", "2d6+0"], ["Special Stats", "Gain +4 versus disarm and +0.5t+1 to Climb checks.   Unarmed Strikes now deal lethal damage and do not provoke AoOs. +8 To Obscure checks to conceal this item. Surprise attack grants flanking for 1 attack."]],
 			"Extending Cloak": [["Special Stats", "Can extend 10t+0 feet and form a bridge or a poor barrier as a standard action. If torn through, it retracts and cannot extend until the next day."]],
 			"Bandana": [["Special Stats", "Can open/close unhindered objects and perform 1-pound telekinesis up to 1t+0 cells away. Requires a move action to activate. Swift action to maintain."]],
 			"Sticky Spore Pauldrons": [["Special Stats", "0.34t+1 times per day you can create a 3x3 area of difficult terrain as move action."]],
