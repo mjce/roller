@@ -156,7 +156,7 @@
 		"Lethal":
 			["Damage", ["+01d3+0", "+01d4+0", "+01d6+0", "+01d6+1", "+02d4+0", "+02d6+0", "+02d6+2", "+03d6+2", "+03d6+5"]],
 		"Erratic":
-			["Critical Damage", ["+0b+4", "+1b+4", "+1b+9", "+2b+9", "+2b+15", "+3b+15", "+3b+21", "+4b+21", "+3b+28"]],
+			["Critical Damage", ["0b+4", "+1b+4", "+1b+9", "+2b+9", "+2b+15", "+3b+15", "+3b+21", "+4b+21", "+3b+28"]],
 		"Flaming":
 			["Fire Damage", ["+0d2+1", "+0d2+2", "+0d2+3", "+0d2+4", "+0d2+5", "+0d2+7", "+0d2+9", "+0d2+12", "+0d2+15"]],
 		"Electric":
@@ -443,7 +443,7 @@
 			"Rapier": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+2"], ["Range", "1"], ["Hands", 1], ["Hit", 2], ["Power Requirement", 1], ["Finesse Requirement", 3], ["Special Stats", "None"]],
 			"Javelins": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "1-6"], ["Hands", 1], ["Hit", 1], ["Power Requirement", 2], ["Special Stats", "Ranged attacks do not provoke attacks of opportunity"]],
 			"Composite Bow": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "2d12+0"], ["Range", "2-15"], ["Hands", 2], ["Hit", 1], ["Power Requirement", 4], ["Special Stats", "Force"]],
-			"Staff of Clout": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Range", "1"], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 5], ["Special Stats", "+1d4 to all Lore Master ability damage.  Weapon deals damage type of choice."]],
+			"Staff of Clout": [["Bashing Damage", "1d6+0"], ["Bashing Critical Damage", "2d6+0"], ["Spell Damage", "1d4+0"], ["Range", "1"], ["Hands", 2], ["Hit", 0], ["Attunement Requirement", 5], ["Special Stats", "Increases all Lore Master ability damage.  Weapon deals damage type of choice."]],
 			"Poleaxe": [["Slashing Damage", "2d6+0"], ["Slashing Critical Damage", "3d6+0"], ["Range", "1-2"], ["Hands", 2], ["Hit", 1], ["Power Requirement", 3], ["Special Stats", "Force unless attacking at range 1"]],
 			"Throwing Stars": [["Piercing Damage", "1d4+0"], ["Piercing Critical Damage", "2d12+4"], ["Range", "2-4"], ["Hands", 1], ["Hit", 1], ["Finesse Requirement", 3], ["Special Stats", "+4 Obscure to conceal.  Surprise attack from hidden as if flanking."]],
 			"Spiked Shield": [["Piercing Damage", "1d8+0"], ["Piercing Critical Damage", "3d8+0"], ["Range", "1"], ["Hands", 1], ["Hit", 0], ["Special Stats", "Grants +1 AC and +1 ACrit per tier level"]],
@@ -522,6 +522,8 @@
 			"Shock Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
 			"Acid Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
 			"Acid Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
+			"Spell Damage": ["0x0", "0x2", "1x2", "1x4", "2x4", "2x7", "3x7", "3x11", "4x11"],
+			"Spell Critical Damage": ["0x0", "0x2", "1x2", "1x5", "2x5", "2x9", "3x9", "3x14", "4x14"],
 			"Barrier15": [15, 18, 22, 27, 34, 43, 54, 68, 85],
 			"Barrier20": [20, 23, 28, 34, 42, 53, 66, 82, 102],
 			"Barrier25": [25, 30, 36, 44, 54, 67, 83, 103, 127],
