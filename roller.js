@@ -304,11 +304,16 @@ function getMagicStats(){
   var magicTable = masterTable["enhancements"][character.kind];
   var adjustedTier = Number(character.tier.slice(4)-1);
   if (character.kind != "accessory") {
-    for (enchantment in character.magic){
-      current = magicTable[enchantment];
-
-      magicStats += magicTable[current][0] + ": " + magicTable[current][1][adjustedTier] + "<br>";
+    if(character.magic[1]){
+      for (enchantment in character.magic){
+        current = magicTable[enchantment];
+        magicStats += magicTable[current][0] + ": " + magicTable[current][1][adjustedTier] + "<br>";
+      }
+    } else {
+      current = magicTable[character.magic];
+      magicStats += current[0] + ": " + current[1][adjustedTier] + "<br>";
     }
+
   } else {
     magicStats += character.magic.toString().substring(3)+ ": " + magicTable[character.tier]["primary"] + "<br>All Other Stats: " + magicTable[character.tier]["secondary"];
   }
@@ -485,7 +490,7 @@ function magicFinder (category){
           offhandMaj = "Hardy";
         }
       }
-      return firstRoll(offhandMaj);
+      return firstRoll([offhandMaj]);
   } else if (category == "accessory"){
       // players have choices for accessories sometimes,
       // so it uses the "createButtons" function
