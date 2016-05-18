@@ -305,7 +305,8 @@ function getMagicStats(){
   var adjustedTier = Number(character.tier.slice(4)-1);
   if (character.kind != "accessory") {
     for (enchantment in character.magic){
-      current = character.magic[enchantment];
+      current = magicTable[enchantment];
+
       magicStats += magicTable[current][0] + ": " + magicTable[current][1][adjustedTier] + "<br>";
     }
   } else {
