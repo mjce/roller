@@ -66,10 +66,14 @@ function xmlRequests () {
           if (setCount > 0){
             document.getElementById("logMarkSet").className = "enabled";
             document.getElementById("logMarkSet").disabled = false;
+            document.getElementById("logDownload").className = "enabled";
+            document.getElementById("logDownload").disabled = false;
           }
           if (document.getElementById("logContent").innerHTML == ""){
             document.getElementById("logMarkSet").className = "disabled";
             document.getElementById("logMarkSet").disabled = true;
+            document.getElementById("logDownload").className = "disabled";
+            document.getElementById("logDownload").disabled = true;
           }
           var i = 1;
           while (i <= count){
@@ -130,6 +134,8 @@ function clearLogAll(){
   setCount = 0;
   document.getElementById("logMarkSet").disabled = true;
   document.getElementById("logMarkSet").className = "disabled";
+  document.getElementById("logDownload").disabled = true;
+  document.getElementById("logDownload").className = "disabled";
   document.getElementById("logContent").innerHTML = "";
   localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
@@ -155,10 +161,13 @@ function clearLogLast(){
         if (setCount <= 0) {
           document.getElementById("logMarkSet").disabled = true;
           document.getElementById("logMarkSet").className = "disabled";
+          document.getElementById("logDownload").className = "disabled";
+          document.getElementById("logDownload").disabled = true;
         }
       }
-      if (lastMatch == 0){
+      if (curMatch == 0){
       document.getElementById("logContent").innerHTML = "";
+
       } else {
       document.getElementById("logContent").innerHTML = logString.substring(0, lastMatch);
       }
@@ -260,6 +269,8 @@ function firstRoll(variable){
     logMarkSet();
     document.getElementById("logMarkSet").className = "enabled";
     document.getElementById("logMarkSet").disabled = false;
+    document.getElementById("logDownload").className = "enabled";
+    document.getElementById("logDownload").disabled = false;
     }
     document.getElementById("logContent").innerHTML += "<!--New Entry--> <br>" + "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
     count += 1;
@@ -288,22 +299,21 @@ function firstRoll(variable){
     createSelect([], "seedItemType");
     createSelect([], "seedSubtype");
   }
-function getMagicStats(magic){
+function getMagicStats(){
   var magicStats = "<b>Enhancement Bonuses:</b><br><br>";
   var magicTable = masterTable["enhancements"][character.kind];
   var adjustedTier = Number(character.tier.slice(4)-1);
-  if (character.kind != "accessory"){
-    for (enchantment in magic){
-      current = magic[enchantment];
+  if (character.kind != "accessory") {
+    for (enchantment in character.magic){
+      current = character.magic[enchantment];
       magicStats += magicTable[current][0] + ": " + magicTable[current][1][adjustedTier] + "<br>";
     }
   } else {
-    magicStats += magic.toString().substring(2)+ ": " + magicTable[character.tier]["primary"] + "<br>All Other Stats: " + magicTable[character.tier]["secondary"];
+    magicStats += character.magic.toString().substring(3)+ ": " + magicTable[character.tier]["primary"] + "<br>All Other Stats: " + magicTable[character.tier]["secondary"];
   }
   magicStats = parseDice(magicStats);
   magicStats = parseFlip(magicStats);
   magicStats = parseBase(character.stat, magicStats);
-  //magicStats = parseBase(magicStats);
   return magicStats;
 }
 }
@@ -784,6 +794,25 @@ return string;
 function coinflip(){
   // returns 0 or 1 with a 50-50 chance
   return Math.round(Math.random());
+}
+function downloadLog() {
+    var link = document.createElement('a');
+    var mimeType = 'text/html';
+    var date = new Date();
+    var filename = date.toLocaleDateString() + "_Descension_Item_Log.txt";
+    var textLog = document.getElementById("logContent").innerHTML;
+    textLog = textLog.replace(/<br>Your/g, "\r\n\r\nYour");
+    textLog = textLog.replace(/Set\s/g, "\r\n\r\nSet ");
+    textLog = textLog.replace(/<br>/g, "\r\n");
+    textLog = textLog.replace(/<.*?>/g, "");
+    textLog = textLog.replace(/Show Stats/g, "");
+    textLog = textLog.replace(/\r\n\r\nSet\s1/g, "Set 1");
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(textLog));
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link)
+    return false;
 }
 // loads the wrapper function / xml request for JSON data
 window.onload = xmlRequests;
