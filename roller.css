@@ -69,7 +69,7 @@ button:hover, input[type="button"]:hover{
 }
 #content {
   display: flex;
-  overflow-y: scroll;
+  overflow-y: auto;
   flex-direction: column;
   align-items: center;
   flex-grow: 4;
