@@ -179,8 +179,9 @@ button:hover{
 #logButtons{
   display: flex;
   flex-direction: row;
-  height: auto;
+  height: 30px;
   justify-content: center;
+  align-content: center;
 }
 
 #logButtons > button{
