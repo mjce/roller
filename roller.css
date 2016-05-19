@@ -179,6 +179,7 @@ button:hover, input[type="button"]:hover{
 #logButtons{
   display: flex;
   flex-direction: row;
+  flex-shrink: 1;
   height: 30px;
   justify-content: center;
   align-content: center;
