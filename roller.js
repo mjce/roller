@@ -300,7 +300,7 @@ function firstRoll(variable){
     createSelect([], "seedSubtype");
   }
 function getMagicStats(){
-  var magicStats = "<b>Enhancement Bonuses:</b><br><br>";
+  var magicStats = "<b>Enhancement Bonuses:</b><br>";
   var magicTable = masterTable["enhancements"][character.kind];
   var adjustedTier = Number(character.tier.slice(4)-1);
   if (character.kind != "accessory") {
