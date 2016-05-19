@@ -163,7 +163,7 @@ button:hover{
   margin-bottom: 5px;
 }
 #logContent{
-  flex-grow: 4;
+  flex-grow: 3;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 10px;
@@ -179,6 +179,7 @@ button:hover{
 #logButtons{
   display: flex;
   flex-direction: row;
+  height: auto;
   justify-content: center;
 }
 
