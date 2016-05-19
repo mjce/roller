@@ -72,7 +72,9 @@ button:hover, input[type="button"]:hover{
   flex-direction: column;
   align-items: center;
   flex-grow: 4;
+  margin: 10px;
   padding-top: 10px;
+  border: 1.5px solid black;
 }
 #result {
   margin-bottom: 5px;
@@ -174,6 +176,7 @@ button:hover, input[type="button"]:hover{
   border-bottom: 1.5px solid black;
   border-top: 1.5px solid black;
   border-right: 1.5px solid black;
+  max-height: 354px;
   line-height: 1.5;
 }
 #logButtons{
