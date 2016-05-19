@@ -13,7 +13,7 @@ select {
   padding: 5px;
   color: black;
 }
-button {
+button, input[type="button"] {
   font-family: 'Josefin Slab', serif;
   padding: 5px;
   color: black;
@@ -27,7 +27,7 @@ button {
 #controls button{
   margin-right: 5px;
 }
-button:hover{
+button:hover, input[type="button"]:hover{
   background-color: #dfdfdf;
 }
 #form{
@@ -184,7 +184,7 @@ button:hover{
   align-content: center;
 }
 
-#logButtons > button{
+#logButtons > button, input[type="button"]{
   margin-left: 3px;
   margin-right: 3px;
 }
