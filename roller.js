@@ -111,7 +111,7 @@ function storeCheck(){
     character.special = " ";
     return "store";
   } else {
-    character.special = " <b>special</b> ";
+    character.special = " special ";
     return "special";
   }
 }
@@ -210,7 +210,7 @@ function firstRoll(variable){
         curState = 1;
         return firstRoll(document.getElementById("seedItemType").options[document.getElementById("seedItemType").selectedIndex].value);
       } else if (character.source != "none"){
-        if (character.source = "special"){character.special = " <b>special</b> "} else {character.special = " "}
+        if (character.source = "special"){character.special = " special "} else {character.special = " "}
       } else {
         character.source = storeCheck();
       }
@@ -249,7 +249,7 @@ function firstRoll(variable){
   } else if (curState == 2){
     // set character.equipment to passed variable
     character.equipment = variable;
-    output ="You rolled: " + "<b>" + variable + "</b>"+ "!" + "<br><br>";
+    output ="<span>You rolled: " + "<b>" + variable + "</b>"+ "!" + "<br><br><span>";
     output += "Choose your enhancement type:";
     // check enhancement from complicated set of rules, pass as variable to new
     // firstRoll instance
@@ -304,19 +304,13 @@ function getMagicStats(){
   var magicTable = masterTable["enhancements"][character.kind];
   var adjustedTier = Number(character.tier.slice(4)-1);
   if (character.kind != "accessory") {
-    if(character.magic[1]){
       for (enchantment in character.magic){
-        current = magicTable[enchantment];
-        magicStats += magicTable[current][0] + ": " + magicTable[current][1][adjustedTier] + "<br>";
+        current = magicTable[character.magic[enchantment]];
+        magicStats += current[0] + ": " + current[1][adjustedTier] + "<br>";
       }
     } else {
-      current = magicTable[character.magic];
-      magicStats += current[0] + ": " + current[1][adjustedTier] + "<br>";
+      magicStats += character.magic.toString().substring(3)+ ": " + magicTable[character.tier]["primary"] + "<br>All Other Stats: " + magicTable[character.tier]["secondary"];
     }
-
-  } else {
-    magicStats += character.magic.toString().substring(3)+ ": " + magicTable[character.tier]["primary"] + "<br>All Other Stats: " + magicTable[character.tier]["secondary"];
-  }
   magicStats = parseDice(magicStats);
   magicStats = parseFlip(magicStats);
   magicStats = parseBase(character.stat, magicStats);
@@ -805,7 +799,7 @@ function downloadLog() {
     var link = document.createElement('a');
     var mimeType = 'text/html';
     var date = new Date();
-    var filename = date.toLocaleDateString() + "_Descension_Item_Log.txt";
+    var filename = date.toLocaleDateString() + " Descension Item Log.txt";
     var textLog = document.getElementById("logContent").innerHTML;
     textLog = textLog.replace(/<br>Your/g, "\r\n\r\nYour");
     textLog = textLog.replace(/Set\s/g, "\r\n\r\nSet ");

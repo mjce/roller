@@ -1,6 +1,10 @@
+:root {
+  --default-width: 510px;
+  --default-height: 450px;
+}
+
 body{
   font-family: 'Josefin Slab', serif;
-  display: flex;
 }
 select {
   font-family: 'Josefin Slab', serif;
@@ -27,8 +31,24 @@ button:hover{
   background-color: #dfdfdf;
 }
 #form{
-  margin-bottom: 10px;
-  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  font-size: 20px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+#form > * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#controls > button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width:85px;
+  font-size: 15px;
 }
 .disabled {
   opacity: 0.6;
@@ -38,26 +58,47 @@ button:hover{
 
 }
 #roller {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 10px 10px 10px 10px;
   border: 1.5px solid black;
-  display: inline-block;
-  margin-right: 10px;
-  padding: 10px;
-  float: left;
-  min-height: 85px;
+  height: var(--default-height);
+  width: var(--default-width);
+}
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 4;
+  padding-top: 10px;
 }
 #result {
-  height: auto;
-  min-height: 25px;
-  border-top: 1px solid black;
-  padding-top: 10px;
   margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 66%;
+  flex-grow: 1;
 }
 #controls {
-  height: auto;
-  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  min-width: 66%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 #stat{
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  line-height: 1.5;
+  align-content: space-between;
   height: auto;
+  flex-grow:2;
   max-width: 500px;
 }
 .invisible {
@@ -82,23 +123,34 @@ button:hover{
   left: 10px;
 }
 #log{
+  flex-direction: column;
+  justify-content: center;
   border: 1.5px solid black;
-  display: inline-block;
+  display: flex;
   margin: auto;
   padding: 10px;
   min-height: 78px;
-  max-width: 500px;
+  width: var(--default-width);
+  height: var(--default-height);
 }
 .bold{
   font-weight: bold;
 }
 #seed{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+  padding-top: 10px;
   margin-top: 10px;
-  margin-right:auto;
-  border-top: 1.5px solid black;
-  padding: 10px 0px 0px 0px;
   font-weight: bold;
-  display: inline-block;
+}
+#seedSubType{
+  width: 163px;
+}
+#seedItemType{
+  width: 86px;
 }
 #logHeader{
   border-bottom: 1.5px solid black;
@@ -106,6 +158,9 @@ button:hover{
   margin-bottom: 5px;
 }
 #logContent{
+  flex-grow: 4;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding-bottom: 10px;
   padding-top: 10px;
   margin-bottom: 10px;
@@ -116,5 +171,11 @@ button:hover{
   display: inline-block;
 }
 #wrapper{
-  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  width: 66%;
+  max-width: 1100px;
 }
