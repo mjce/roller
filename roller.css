@@ -8,49 +8,49 @@ body{
 }
 select {
   font-family: 'Josefin Slab', serif;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding: 5px;
+  margin-left: .25em;
+  margin-right: .25em;
+  padding: .25em;
   color: black;
 }
 button, input[type="button"] {
   font-family: 'Josefin Slab', serif;
-  padding: 5px;
+  padding: .25em;
   color: black;
   border: 1px solid gray;
   background-color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: .25em;
   line-height: 1;
   cursor: pointer;
 }
 #controls button{
-  margin-right: 5px;
+  margin-right: .25em;
 }
 
 button:hover, input[type="button"]:hover{
   background-color: #dfdfdf;
 }
 #form{
-  padding-bottom: 10px;
+  padding-bottom: .5em;
   border-bottom: 1px solid black;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 1.25em;
+  margin-bottom: .5em;
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: flex-end;
 }
 #form > * {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: .25em;
+  margin-right: .25em;
 }
 
 #controls > button {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width:85px;
-  font-size: 15px;
+  margin-top: .25em;
+  margin-bottom: .25em;
+  width:4em;
+  font-size: 1em;
 }
 .disabled {
   opacity: 0.6;
@@ -60,11 +60,11 @@ button:hover, input[type="button"]:hover{
 
 }
 #roller {
-  margin-right: 10px;
+  margin-right: .5em;
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  padding: 10px 10px 10px 10px;
+  padding: .5em .5em .5em .5em;
   border: 1.5px solid black;
   height: var(--default-height);
   width: var(--default-width);
@@ -75,8 +75,8 @@ button:hover, input[type="button"]:hover{
   flex-direction: column;
   align-items: center;
   flex-grow: 4;
-  margin: 10px;
-  padding: 10px;
+  margin: .5em;
+  padding: .5em;
   border: 1.5px solid black;
   position: relative;
 }
@@ -87,8 +87,8 @@ button:hover, input[type="button"]:hover{
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: .5em;
+  margin-bottom: .5em;
   opacity: 0.1;
   top: 0;
   left: 0;
@@ -98,7 +98,7 @@ button:hover, input[type="button"]:hover{
   z-index: -1;
 }
 #result {
-  margin-bottom: 5px;
+  margin-bottom: .25em;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -123,7 +123,7 @@ button:hover, input[type="button"]:hover{
   align-content: space-between;
   height: auto;
   flex-grow:3;
-  max-width: 500px;
+  max-width: 25em;
 }
 .invisible {
   display: none;
@@ -131,12 +131,12 @@ button:hover, input[type="button"]:hover{
 .visible {
   display: inherit;
   padding: 0px 0px 0px 0px;
-  margin-top: 10px;
+  margin-top: .5em;
   color: gray;
 }
 .setHeader {
   border-bottom: 1px solid black;
-  margin-top: 10px;
+  margin-top: .5em;
 }
 .expButton{
   user-select: none;
@@ -144,17 +144,17 @@ button:hover, input[type="button"]:hover{
 }
 .floatingHeader {
   position: absolute;
-  left: 10px;
+  left: .5em;
 }
 #log{
-  margin-left: 10px;
+  margin-left: .5em;
   flex-direction: column;
   justify-content: center;
   border: 1.5px solid black;
   display: flex;
   margin: auto;
-  padding: 10px;
-  min-height: 78px;
+  padding: .5em;
+  min-height: 4em;
   width: 350px;
   height: var(--default-height);
 }
@@ -167,8 +167,8 @@ button:hover, input[type="button"]:hover{
   justify-content: center;
   align-items: center;
   border-top: 1px solid black;
-  padding-top: 10px;
-  margin-top: 10px;
+  padding-top: .5em;
+  margin-top: .5em;
   font-weight: bold;
 }
 #seedSubType{
@@ -182,17 +182,17 @@ button:hover, input[type="button"]:hover{
   display:flex;
   flex-direction: row;
   justify-content: center;
-  padding-bottom: 5px;
-  margin-bottom: 5px;
+  padding-bottom: .25em;
+  margin-bottom: .25em;
 }
 #logContent{
   flex-grow: 3;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  padding: .5em;
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-bottom: .5em;
   border-left: 1.5px solid black;
   border-bottom: 1.5px solid black;
   border-top: 1.5px solid black;
