@@ -16,6 +16,7 @@ select {
 button, input[type="button"] {
   font-family: 'Josefin Slab', serif;
   padding: .25em;
+  width: auto;
   color: black;
   border: 1px solid gray;
   background-color: white;
@@ -49,7 +50,7 @@ button:hover, input[type="button"]:hover{
 #controls > button {
   margin-top: .25em;
   margin-bottom: .25em;
-  width:4em;
+  width:6em;
   font-size: 1em;
 }
 .disabled {
@@ -77,7 +78,7 @@ button:hover, input[type="button"]:hover{
   align-items: center;
   flex-grow: 4;
   margin: .5em;
-  padding: .5em;
+  padding: 1.5em;
   border: 1.5px solid black;
   position: relative;
 }
