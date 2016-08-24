@@ -102,6 +102,7 @@ function setCheck(){
   setCount = 0;
   var nodeList = document.getElementById("logContent").childNodes;
   Array.prototype.forEach.call (nodeList, function (node) {
+    alert("node type" + node.tagName);
     if (node.tagName == "div"){
       alert("found a set");
     setCount++;
