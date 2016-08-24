@@ -250,7 +250,7 @@ function firstRoll(variable){
     //fires if last element in log is not an unordered list
     //appends an unordered list with appropriate properties, updates lastNode
     var nodeList = document.getElementById("logContent").childNodes;
-    var lastNode = nodeList[nodeList.length - 1];
+    var lastNode = nodeList[nodeList.length - 1] || null;
     if (lastNode.tagName != "ul" || lastNode == null){
       var ul = document.createElement("UL");
       jQuery.data(ul, "set", setCount);
