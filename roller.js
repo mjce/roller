@@ -252,7 +252,7 @@ function firstRoll(variable){
     if (lastNode.tagName != "ul"){
       var ul = document.createElement("UL");
       jQuery.data(ul, "set", setCount);
-      ul.className = "sortable-inventory";
+      ul.className = "item-list";
       content.appendChild(ul);
       lastNode = ul;
     }
