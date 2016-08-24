@@ -245,9 +245,9 @@ function firstRoll(variable){
       // by line breaks
     output = formatOutput();
     // output final values to divs
-    var content = document.getElementById("logContent").innerHTML;
+    var content = document.getElementById("logContent");
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
-    if (content == "") {
+    if (content.innerHTML == "") {
     setCount = 1;
     logMarkSet();
     document.getElementById("logMarkSet").className = "enabled";
