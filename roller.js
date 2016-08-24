@@ -248,7 +248,7 @@ function firstRoll(variable){
     var lastNode = content.childNodes[content.childNodes.length - 1];
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
     if (content == "") {
-    setCount = 0;
+    setCount = 1;
     logMarkSet();
     document.getElementById("logMarkSet").className = "enabled";
     document.getElementById("logMarkSet").disabled = false;
@@ -275,7 +275,7 @@ function firstRoll(variable){
     jQuery.data(newItem, "stats", character.stat);
     jQuery.data(newItem, "bonus", character.magic);
     newItem.title = document.getElementById("stat").innerHTML;
-    newItem.appendChild(document.createTextNode(document.getElementById("result").innerHTML.slice(3, -3)));
+    newItem.appendChild(document.createTextNode(document.getElementById("result").innerHTML.slice(3, -4)));
     lastNode.appendChild(newItem);
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     localStorage["laststat"] = document.getElementById("stat").innerHTML;
@@ -307,7 +307,6 @@ function logMarkSet(){
   var div = document.createElement("DIV");
   div.innerHTML = "<b>Set " + setCount + "</b>";
   div.className = "setHeader";
-  document.getElementById("logContent").innerHTML += "<!--New Set-->";
   document.getElementById("logContent").appendChild(div);
   setCheck();
   localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
