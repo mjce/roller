@@ -2,6 +2,13 @@
   --default-width: 510px;
   --default-height: 450px;
 }
+.ui-tooltip {
+  padding: 10px;
+  background: white;
+  width: 170px;
+  border: 1px solid black;
+  z-index: 1000;
+}
 body{
   font-family: 'Josefin Slab', serif;
   margin: 0;
