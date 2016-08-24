@@ -267,7 +267,7 @@ function firstRoll(variable){
     jQuery.data(newItem, "stats", character.stat);
     jQuery.data(newItem, "bonus", character.magic);
     newItem.title = document.getElementById("stat").innerHTML;
-    newItem.appendChild(document.createTextNode(item.title));
+    newItem.appendChild(document.createTextNode(document.getElementById("result").innerHTML));
     document.getElementById(lastNode).appendChild(newItem);
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     localStorage["laststat"] = document.getElementById("stat").innerHTML;
