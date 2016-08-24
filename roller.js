@@ -246,10 +246,11 @@ function firstRoll(variable){
     document.getElementById("logDownload").className = "enabled";
     document.getElementById("logDownload").disabled = false;
     }
-    count += 1;
     //fires if last element in log is not an unordered list
     //appends an unordered list with appropriate properties, updates lastNode
-    if (lastNode.tagName != "ul"){
+    var nodeList = document.getElementById("logContent").childNodes;
+    var lastNode = nodeList[nodeList.length - 1];
+    if (lastNode.tagName != "ul" || lastNode == null){
       var ul = document.createElement("UL");
       jQuery.data(ul, "set", setCount);
       ul.className = "item-list";
@@ -266,7 +267,7 @@ function firstRoll(variable){
     jQuery.data(newItem, "bonus", character.magic);
     newItem.title = document.getElementById("stat").innerHTML;
     newItem.appendChild(document.createTextNode(item.title));
-    document.getElementById(ul).appendChild(newItem);
+    document.getElementById(lastNode).appendChild(newItem);
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     localStorage["laststat"] = document.getElementById("stat").innerHTML;
     localStorage["lastresult"] = document.getElementById("result").innerHTML;
