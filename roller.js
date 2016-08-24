@@ -776,7 +776,7 @@ function downloadLog() {
     if (node.tagName == "DIV"){
         textLog += node.innerHTML + "\r\n\r\n";
       } else if (node.tagName == "UL"){
-         Array.prototype.forEach.call (ul, function (li) {
+         Array.prototype.forEach.call (node, function (li) {
           textLog += li.innerHTML + "\r\n";
         });
         textLog += "\r\n\r\n";
