@@ -93,14 +93,11 @@ function xmlRequests () {
 function setCheck(){
   setCount = 0;
   var nodeList = document.getElementById("logContent").childNodes;
-  alert(nodeList);
-  if (nodeList != null){
-    nodeList.forEach(function(node){
+  Array.prototype.forEach.call (nodeList, function (node) {
     if (node.tagName == "div"){
-      setCount++;
+    setCount++;
     }
-  });
-  }
+});
 }
 
 function storeCheck(){
@@ -767,11 +764,11 @@ function downloadLog() {
     var filename = date.toLocaleDateString() + " Descension Item Log.txt";
     var nodeList = document.getElementById("logContent").childNodes;
     var textLog = "";
-    nodeList.forEach(function(node){
-      if (node.tagName == "div"){
+    Array.prototype.forEach.call (nodeList, function (node) {
+    if (node.tagName == "div"){
         textLog += node.innerHTML + "\r\n\r\n";
       } else if (node.tagName == "ul"){
-        ul.childNodes.forEach(function(li){
+         Array.prototype.forEach.call (ul, function (li) {
           textLog += li.innerHTML + "\r\n";
         });
         textLog += "\r\n\r\n";
