@@ -102,12 +102,9 @@ function setCheck(){
   setCount = 0;
   var nodeList = document.getElementById("logContent").childNodes;
   Array.prototype.forEach.call (nodeList, function (node) {
-    alert("node type" + node.tagName);
-    if (node.tagName == "div"){
-      alert("found a set");
+    if (node.tagName == "DIV"){
     setCount++;
     }
-    alert("Set check run. Total set count: " + setCount);
 });
 }
 
@@ -150,10 +147,10 @@ function clearLogLast(){
   // removes the last item or set marker added
   var nodeList = document.getElementById("logContent").childNodes;
   var lastNode = nodeList[nodeList.length - 1];
-  if (lastNode.tagName == "div"){
+  if (lastNode.tagName == "DIV"){
     document.getElementById("logContent").removeChild(lastNode);
     setCheck();
-  } else if (lastNode.tagName == "ul") {
+  } else if (lastNode.tagName == "UL") {
     alert(lastNode.childNodes.length);
     if(lastNode.childNodes.length > 0){
       lastNode.removeChild(lastNode.childNodes[lastNode.childNodes.length - 1]);
@@ -262,7 +259,7 @@ function firstRoll(variable){
     //appends an unordered list with appropriate properties, updates lastNode
     var nodeList = document.getElementById("logContent").childNodes;
     var lastNode = nodeList[nodeList.length - 1] || null;
-    if (lastNode == null || lastNode.tagName != "ul"){
+    if (lastNode == null || lastNode.tagName != "UL"){
       var ul = document.createElement("UL");
       jQuery.data(ul, "set", setCount);
       ul.className = "item-list";
@@ -776,9 +773,9 @@ function downloadLog() {
     var nodeList = document.getElementById("logContent").childNodes;
     var textLog = "";
     Array.prototype.forEach.call (nodeList, function (node) {
-    if (node.tagName == "div"){
+    if (node.tagName == "DIV"){
         textLog += node.innerHTML + "\r\n\r\n";
-      } else if (node.tagName == "ul"){
+      } else if (node.tagName == "UL"){
          Array.prototype.forEach.call (ul, function (li) {
           textLog += li.innerHTML + "\r\n";
         });
