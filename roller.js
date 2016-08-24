@@ -775,12 +775,12 @@ function downloadLog() {
       alert(node.tagName);
     if (node.tagName == "DIV"){
         textLog += node.innerHTML.slice(3, -4) + "\r\n\r\n";
-      } else if (node.tagName == "UL"){
-         Array.prototype.forEach.call (node, function (li) {
-           alert("adding" + li.innerHTML);
-          textLog += li.innerHTML + "\r\n";
-        });
-        textLog += "\r\n\r\n";
+    } else {
+      Array.prototype.forEach.call (node, function (li) {
+      alert("adding" + li.innerHTML);
+      textLog += li.innerHTML + "\r\n";
+      });
+      textLog += "\r\n\r\n";
       }
     });
     link.setAttribute('download', filename);
