@@ -93,7 +93,7 @@ function xmlRequests () {
 function setCheck(){
   setCount = 0;
   var nodeList = document.getElementById("logContent").childNodes;
-  alert(nodeList)
+  alert(nodeList);
   if (nodeList != null){
     nodeList.forEach(function(node){
     if (node.tagName == "div"){
