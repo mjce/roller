@@ -92,12 +92,14 @@ function xmlRequests () {
 //returns number of sets by counting divs in logContent
 function setCheck(){
   setCount = 0;
-  var nodeList = document.getElementById("logContent").childNodes || [];
-  nodeList.forEach(function(node){
+  var nodeList = document.getElementById("logContent").childNodes;
+  if (nodeList){
+    nodeList.forEach(function(node){
     if (node.tagName == "div"){
       setCount++;
     }
   });
+  }
 }
 
 function storeCheck(){
