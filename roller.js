@@ -22,9 +22,19 @@ output = "";
 itemType = "";
 count = 0;
 setCount = 0;
+var partyDB = new PouchDB('party');
+var remoteCouch = 'http://descension.me/couch/party';
 
+function sync() {
+  var opts = {live: true};
+  partyDB.replicate.to(remoteCouch, opts, syncError);
+  partyDB.replicate.from(remoteCouch, opts, syncError);
+}
+function syncError() {
+ }
 function xmlRequests () {
   //this runs on load, so it's part wrapper and part xml request.  should probably be split into two.
+  sync();
   document.getElementById("rollButton").className = "enabled";
   document.getElementById("rollButton").disabled = false;
   document.getElementById("class").className = "enabled";
@@ -61,7 +71,6 @@ function xmlRequests () {
           //document.getElementById("stat").innerHTML = localStorage["laststat"];
           //document.getElementById("result").innerHTML = localStorage["lastresult"];
           document.getElementById("logContent").innerHTML = localStorage["lastlog"];
-          count = document.querySelectorAll("#logContent > button").length;
           setCount = setCheck();
           if (setCount > 0){
             document.getElementById("logMarkSet").className = "enabled";
@@ -75,33 +84,19 @@ function xmlRequests () {
             document.getElementById("logDownload").className = "disabled";
             document.getElementById("logDownload").disabled = true;
           }
-          var i = 1;
-          while (i <= count){
-            handleButton(i);
-            i++;
-          }
       }
   };
   tableRequest.open("GET", url, true);
   tableRequest.send();
 }
-
+//returns number of sets by counting divs in logContent
 function setCheck(){
-  var logString = document.getElementById("logContent").innerHTML;
-  var curMatch = 0;
-  var lastMatch = 0;
-  var tempSetCount = 0;
-  do {
-    curMatch = logString.indexOf("<!--New Set-->", lastMatch+1);
-    tempSetCount +=1;
-    if (curMatch == -1){
-      if (lastMatch = 0){
-      tempSetCount = 0;
-      }
+  setCount = 0;
+  document.getElementById("logContent").childNodes.forEach(function(node){
+    if (node.tagName == "div"){
+      setCount++;
     }
-    lastMatch = curMatch;
-  } while(curMatch != -1);
-  return tempSetCount;
+  });
 }
 
 function storeCheck(){
@@ -130,7 +125,6 @@ function typeItem(){
 }
 function clearLogAll(){
   //replaces all log data with an empty string
-  count = 0;
   setCount = 0;
   document.getElementById("logMarkSet").disabled = true;
   document.getElementById("logMarkSet").className = "disabled";
@@ -141,41 +135,19 @@ function clearLogAll(){
 }
 
 function clearLogLast(){
-  //finds the location of the last "<!--New Entry-->" in the log, sets log to substring
-  //up to that point. If it finds none, it replaces the log with an empty string
-  var logString = document.getElementById("logContent").innerHTML;
-  var lastMatch = 0;
-  var curMatch = 0;
-  do {
-    curMatch = logString.indexOf("<!--New Entry-->", lastMatch+1);
-    quickMatch = logString.indexOf("<!--New Set-->", lastMatch+1);
-    if (quickMatch > curMatch){
-      curMatch = quickMatch;
+  // removes the last item or set marker added
+  var nodeList = document.getElementById("logContent").childNodes;
+  var lastNode = nodeList[nodeList.length - 1];
+  if (lastNode.tagName == "div"){
+    document.getElementById("logContent").removeChild(lastNode);
+    setCheck();
+  } else if (lastNode.tagName == "ul") {
+    if(lastNode.childNodes.length > 0){
+      lastNode.removeChild(lastNode.childNodes[lastNode.childNodes.length - 1]);
     }
-    if (curMatch == -1){
-      if (logString.substring(lastMatch).indexOf("<button") != -1){
-        count -= 1;
-      }
-      if (logString.substring(lastMatch).indexOf("<!--New Set-->") != -1){
-        setCount -= 1;
-        if (setCount <= 0) {
-          document.getElementById("logMarkSet").disabled = true;
-          document.getElementById("logMarkSet").className = "disabled";
-          document.getElementById("logDownload").className = "disabled";
-          document.getElementById("logDownload").disabled = true;
-        }
-      }
-      if (curMatch == 0){
-      document.getElementById("logContent").innerHTML = "";
-
-      } else {
-      document.getElementById("logContent").innerHTML = logString.substring(0, lastMatch);
-      }
+    if(lastNode.childNodes.length == 0){
+      document.getElementById("logContent").removeChild(lastNode);
     }
-    lastMatch = curMatch;
-  } while(curMatch != -1);
-  for (i=1;i<=count;i++){
-    handleButton(i);
   }
   localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
@@ -263,8 +235,10 @@ function firstRoll(variable){
       // by line breaks
     output = formatOutput();
     // output final values to divs
+    var content = document.getElementById("logContent");
+    var lastNode = content.childNodes[content.childNodes.length - 1];
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
-    if (document.getElementById("logContent").innerHTML == "") {
+    if (content == "") {
     setCount = 0;
     logMarkSet();
     document.getElementById("logMarkSet").className = "enabled";
@@ -272,25 +246,27 @@ function firstRoll(variable){
     document.getElementById("logDownload").className = "enabled";
     document.getElementById("logDownload").disabled = false;
     }
-    document.getElementById("logContent").innerHTML += "<!--New Entry--> <br>" + "Your <b>" + character.class[0].toUpperCase() + character.class.substring(1) + "</b> rolled... <br />" + output;
     count += 1;
-    document.getElementById("logContent").innerHTML += "<br>";
-    var div = document.createElement("DIV");
-    var expButton = document.createElement("BUTTON");
-    var t2 = document.createTextNode("Show Stats");
-    var divName = "statDiv" + count;
-    div.id = divName;
-    div.className = "invisible";
-    div.innerHTML = character.stat + "<br>" + character.magicStats;
-    expButton.id = divName + "button";
-    expButton.className = "expButton";
-    expButton.appendChild(t2);
-    document.getElementById("logContent").appendChild(expButton);
-    document.getElementById("logContent").appendChild(div);
-    for (i=1;i<=count;i++){
-        handleButton(i);
-      }
+    //fires if last element in log is not an unordered list
+    //appends an unordered list with appropriate properties, updates lastNode
+    if (lastNode.tagName != "ul"){
+      var ul = document.createElement("UL");
+      jQuery.data(ul, "set", setCount);
+      ul.className = "sortable-inventory";
+      content.appendChild(ul);
+      lastNode = ul;
+    }
     document.getElementById("stat").innerHTML = character.stat + "<br>" + character.magicStats;
+    var newItem = document.createNode("LI");
+    newItem.className = "item";
+    jQuery.data(newItem, "id", new Date.toISOString());
+    jQuery.data(newItem, "store", character.source);
+    jQuery.data(newItem, "type", character.kind);
+    jQuery.data(newItem, "stats", character.stat);
+    jQuery.data(newItem, "bonus", character.magic);
+    newItem.title = document.getElementById("stat").innerHTML;
+    newItem.appendChild(document.createTextNode(item.title));
+    document.getElementById(ul).appendChild(newItem);
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     localStorage["laststat"] = document.getElementById("stat").innerHTML;
     localStorage["lastresult"] = document.getElementById("result").innerHTML;
@@ -318,29 +294,13 @@ function getMagicStats(){
 }
 }
 function logMarkSet(){
-  setCount += 1;
   var div = document.createElement("DIV");
   div.innerHTML = "<b>Set " + setCount + "</b>";
   div.className = "setHeader";
   document.getElementById("logContent").innerHTML += "<!--New Set-->";
   document.getElementById("logContent").appendChild(div);
-  for (i=1;i<=count;i++){
-      handleButton(i);
-  }
+  setCheck();
   localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
-}
-
-function handleButton(i){
-  document.getElementById("statDiv"+i+"button").onclick = function (){
-    this.swap = document.getElementById(this.id.toString().substring(0, this.id.length - 6));
-    if (this.swap.className == "visible") {
-      this.swap.className = "invisible";
-      this.innerHTML = "Show Stats";
-    } else {
-      this.swap.className = "visible";
-      this.innerHTML = "Hide Stats";
-    }
-  }
 }
 
 function formatOutput(){
@@ -800,13 +760,18 @@ function downloadLog() {
     var mimeType = 'text/html';
     var date = new Date();
     var filename = date.toLocaleDateString() + " Descension Item Log.txt";
-    var textLog = document.getElementById("logContent").innerHTML;
-    textLog = textLog.replace(/<br>Your/g, "\r\n\r\nYour");
-    textLog = textLog.replace(/Set\s/g, "\r\n\r\nSet ");
-    textLog = textLog.replace(/<br>/g, "\r\n");
-    textLog = textLog.replace(/<.*?>/g, "");
-    textLog = textLog.replace(/Show Stats/g, "");
-    textLog = textLog.replace(/\r\n\r\nSet\s1/g, "Set 1");
+    var nodeList = document.getElementById("logContent").childNodes;
+    var textLog = "";
+    nodeList.forEach(function(node){
+      if (node.tagName == "div"){
+        textLog += node.innerHTML + "\r\n\r\n";
+      } else if (node.tagName == "ul"){
+        ul.childNodes.forEach(function(li){
+          textLog += li.innerHTML + "\r\n";
+        });
+        textLog += "\r\n\r\n";
+      }
+    });
     link.setAttribute('download', filename);
     link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(textLog));
     document.body.appendChild(link);
