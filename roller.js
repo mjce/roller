@@ -305,11 +305,11 @@ function getMagicStats(){
 }
 function logMarkSet(){
   setCheck();
+  setCount++;
   var div = document.createElement("DIV");
   div.innerHTML = "<b>Set " + setCount + "</b>";
   div.className = "setHeader";
   document.getElementById("logContent").appendChild(div);
-  setCheck();
   localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
 }
 
