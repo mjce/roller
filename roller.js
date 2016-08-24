@@ -261,7 +261,7 @@ function firstRoll(variable){
     document.getElementById("stat").innerHTML = character.stat + "<br>" + character.magicStats;
     var newItem = document.createElement("LI");
     newItem.className = "item";
-    jQuery.data(newItem, "id", new Date.toISOString());
+    jQuery.data(newItem, "id", new Date().toISOString());
     jQuery.data(newItem, "store", character.source);
     jQuery.data(newItem, "type", character.kind);
     jQuery.data(newItem, "stats", character.stat);
