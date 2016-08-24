@@ -79,7 +79,7 @@ function xmlRequests () {
           //document.getElementById("stat").innerHTML = localStorage["laststat"];
           //document.getElementById("result").innerHTML = localStorage["lastresult"];
           document.getElementById("logContent").innerHTML = localStorage["lastlog"];
-          setCount = setCheck();
+          setCheck();
           if (setCount > 0){
             document.getElementById("logMarkSet").className = "enabled";
             document.getElementById("logMarkSet").disabled = false;
@@ -105,6 +105,7 @@ function setCheck(){
     if (node.tagName == "div"){
     setCount++;
     }
+    alert("Set check run. Total set count: " + setCount);
 });
 }
 
@@ -304,6 +305,7 @@ function getMagicStats(){
 }
 }
 function logMarkSet(){
+  setCheck();
   var div = document.createElement("DIV");
   div.innerHTML = "<b>Set " + setCount + "</b>";
   div.className = "setHeader";
