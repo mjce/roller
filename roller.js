@@ -25,6 +25,14 @@ setCount = 0;
 var partyDB = new PouchDB('party');
 var remoteCouch = 'http://descension.me/couch/party';
 
+$(function () {
+        $(document).tooltip({
+            content: function () {
+                return $(this).prop('title');
+            }
+        });
+    });
+    
 function sync() {
   var opts = {live: true};
   partyDB.replicate.to(remoteCouch, opts, syncError);
@@ -267,7 +275,7 @@ function firstRoll(variable){
     jQuery.data(newItem, "stats", character.stat);
     jQuery.data(newItem, "bonus", character.magic);
     newItem.title = document.getElementById("stat").innerHTML;
-    newItem.appendChild(document.createTextNode(document.getElementById("result").innerHTML));
+    newItem.appendChild(document.createTextNode(document.getElementById("result").innerHTML.slice(3, -3)));
     lastNode.appendChild(newItem);
     localStorage["lastlog"] = document.getElementById("logContent").innerHTML;
     localStorage["laststat"] = document.getElementById("stat").innerHTML;
