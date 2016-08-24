@@ -776,12 +776,14 @@ function downloadLog() {
         textLog += node.innerHTML.slice(3, -4) + "\r\n\r\n";
     } else {
       Array.prototype.forEach.call (node.childNodes, function (li) {
-      alert("adding" + li.innerHTML);
       textLog += li.innerHTML + "\r\n";
+      textLog += li.title + "\r\n";
       });
       textLog += "\r\n\r\n";
       }
     });
+    textLog = textLog.replace(/<br>/g, "\r\n");
+    textLog = textLog.replace(/<.*?>/g, "");
     link.setAttribute('download', filename);
     link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(textLog));
     document.body.appendChild(link);
