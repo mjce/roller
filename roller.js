@@ -251,7 +251,7 @@ function firstRoll(variable){
     //appends an unordered list with appropriate properties, updates lastNode
     var nodeList = document.getElementById("logContent").childNodes;
     var lastNode = nodeList[nodeList.length - 1] || null;
-    if (lastNode.tagName != "ul" || lastNode == null){
+    if (lastNode == null || lastNode.tagName != "ul"){
       var ul = document.createElement("UL");
       jQuery.data(ul, "set", setCount);
       ul.className = "item-list";
