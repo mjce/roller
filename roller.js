@@ -772,11 +772,10 @@ function downloadLog() {
     var nodeList = document.getElementById("logContent").childNodes;
     var textLog = "";
     Array.prototype.forEach.call (nodeList, function (node) {
-      alert(node.tagName);
     if (node.tagName == "DIV"){
         textLog += node.innerHTML.slice(3, -4) + "\r\n\r\n";
     } else {
-      Array.prototype.forEach.call (node, function (li) {
+      Array.prototype.forEach.call (node.childNodes, function (li) {
       alert("adding" + li.innerHTML);
       textLog += li.innerHTML + "\r\n";
       });
