@@ -151,7 +151,6 @@ function clearLogLast(){
     document.getElementById("logContent").removeChild(lastNode);
     setCheck();
   } else if (lastNode.tagName == "UL") {
-    alert(lastNode.childNodes.length);
     if(lastNode.childNodes.length > 0){
       lastNode.removeChild(lastNode.childNodes[lastNode.childNodes.length - 1]);
     }
@@ -773,6 +772,7 @@ function downloadLog() {
     var nodeList = document.getElementById("logContent").childNodes;
     var textLog = "";
     Array.prototype.forEach.call (nodeList, function (node) {
+      alert(node.tagName);
     if (node.tagName == "DIV"){
         textLog += node.innerHTML.slice(3, -4) + "\r\n\r\n";
       } else if (node.tagName == "UL"){
