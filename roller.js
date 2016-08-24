@@ -245,7 +245,7 @@ function firstRoll(variable){
       // by line breaks
     output = formatOutput();
     // output final values to divs
-    var content = document.getElementById("logContent");
+    var content = document.getElementById("logContent").innerHTML;
     alert(content);
     var lastNode = content.childNodes[content.childNodes.length - 1];
     document.getElementById("result").innerHTML = "<b>" + output + "</b>";
