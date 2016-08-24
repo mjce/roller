@@ -151,6 +151,7 @@ function clearLogLast(){
     document.getElementById("logContent").removeChild(lastNode);
     setCheck();
   } else if (lastNode.tagName == "ul") {
+    alert(lastNode.childNodes.length);
     if(lastNode.childNodes.length > 0){
       lastNode.removeChild(lastNode.childNodes[lastNode.childNodes.length - 1]);
     }
